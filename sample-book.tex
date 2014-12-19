@@ -4,11 +4,18 @@
 
 \usepackage[superscript,biblabel]{cite}
 
-\geometry{a5paper,left=20mm,top=15mm,headsep=1\baselineskip,textwidth=95mm,textheight=180mm,headheight=\baselineskip,marginparwidth=20mm}
+\geometry{a5paper,left=20mm,top=15mm,headsep=1\baselineskip,textwidth=95mm,textheight=180mm,headheight=\baselineskip,marginparwidth=20mm, marginparsep=5mm}
+
+%%
+% Adding setspace to tighten leading on margin notes
+\usepackage{setspace}
 
 %%
 % Adding back marginnote functionality that I've stripped from tufte-common.def
 \usepackage{marginnote}
+\renewcommand{\marginnote}[1]{{\marginpar{\raggedright\footnotesize
+\setstretch{1.025}%
+#1}}}
 
 %%
 % Book metadata
@@ -246,7 +253,7 @@ Add introduction here.
 \mainmatter
 
 \chapter{A chapter title}
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis faucibus libero in tempor. Donec diam eros, elementum ac porta vitae, porttitor sit amet orci. Integer vitae ex at magna posuere volutpat at vitae dui. Aliquam efficitur ante ligula, at facilisis risus gravida ut. Etiam justo ligula, imperdiet in lectus sit amet, ultrices suscipit sapien. Nunc scelerisque semper dignissim. Curabitur eu accumsan erat. Ut nec ultricies ante. Nam nec vestibulum ligula\marginnote{Here's a margin note anyway}.
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis faucibus libero in tempor. Donec diam eros, elementum ac porta vitae, porttitor sit amet orci. Integer vitae ex at magna posuere volutpat at vitae dui. Aliquam efficitur ante ligula, at facilisis risus gravida ut. Etiam justo ligula, imperdiet in lectus sit amet, ultrices suscipit sapien. Nunc scelerisque semper dignissim. Curabitur eu accumsan erat. Ut nec ultricies ante. Nam nec vestibulum ligula\marginnote{``As far as I know, this is the exact three-month renewal.''}.
 
 Donec aliquet egestas elit elementum gravida. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras vitae augue ullamcorper, sodales lacus quis, sollicitudin erat. Sed laoreet rhoncus nibh, quis faucibus nibh feugiat vitae. Sed mollis, ante non ultrices imperdiet, metus metus iaculis risus, vitae blandit quam odio eu mauris. Curabitur a fermentum turpis. Aliquam sed odio quis augue posuere efficitur vitae sed augue\cite{Tufte2006}.
 
