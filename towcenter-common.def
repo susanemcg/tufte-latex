@@ -1,8 +1,8 @@
 %%
-%% This file contains the code that is common to the Tufte-LaTeX document classes.
+%% This file contains the code that is common to the towcenter-LaTeX document classes.
 %%
 
-\ProvidesFile{tufte-common.def}[2011/06/18 v3.5.2 Common code for the Tufte-LaTeX styles]
+\ProvidesFile{towcenter-common.def}[2011/06/18 v3.5.2 Common code for the towcenter-LaTeX styles]
 
 %%
 % The `xkeyval' package simplifies the user interface for the document class options
@@ -15,246 +15,246 @@
 %%
 % Define some shortcut macros for error/warning/info logging.
 \RequirePackage{hardwrap}
-\GenerateClassLogMacros[@tufte]{\@tufte@pkgname}
-\newcommand{\@tufte@debug@info}[1]{\ifthenelse{\boolean{@tufte@debug}}{\@tufte@info{#1}}{}}
-\newcommand{\@tufte@debug@info@noline}[1]{\ifthenelse{\boolean{@tufte@debug}}{\@tufte@info@noline{#1}}{}}
+\GenerateClassLogMacros[@towcenter]{\@towcenter@pkgname}
+\newcommand{\@towcenter@debug@info}[1]{\ifthenelse{\boolean{@towcenter@debug}}{\@towcenter@info{#1}}{}}
+\newcommand{\@towcenter@debug@info@noline}[1]{\ifthenelse{\boolean{@towcenter@debug}}{\@towcenter@info@noline{#1}}{}}
 
 %%
 % `debug' option -- provides more information in the .log file for use in
 % troubleshooting problems
-\newboolean{@tufte@debug}
-\DeclareOptionX[tufte]<common>{debug}{\setboolean{@tufte@debug}{true}}
+\newboolean{@towcenter@debug}
+\DeclareOptionX[towcenter]<common>{debug}{\setboolean{@towcenter@debug}{true}}
 
 %%
 % `nofonts' option -- doesn't load any fonts
 % `fonts' option -- tries to load fonts
-\newboolean{@tufte@loadfonts}\setboolean{@tufte@loadfonts}{true}
-\DeclareOptionX[tufte]<common>{fonts}{\setboolean{@tufte@loadfonts}{true}}
-\DeclareOptionX[tufte]<common>{nofonts}{\setboolean{@tufte@loadfonts}{false}}
+\newboolean{@towcenter@loadfonts}\setboolean{@towcenter@loadfonts}{true}
+\DeclareOptionX[towcenter]<common>{fonts}{\setboolean{@towcenter@loadfonts}{true}}
+\DeclareOptionX[towcenter]<common>{nofonts}{\setboolean{@towcenter@loadfonts}{false}}
 
 %%
 % `nols' option -- doesn't configure letterspacing
 % `ls' option -- configures letterspacing
-\newboolean{@tufte@letterspace}\setboolean{@tufte@letterspace}{true}
-\DeclareOptionX[tufte]<common>{ls}{\setboolean{@tufte@letterspace}{true}}
-\DeclareOptionX[tufte]<common>{nols}{\setboolean{@tufte@letterspace}{false}}
+\newboolean{@towcenter@letterspace}\setboolean{@towcenter@letterspace}{true}
+\DeclareOptionX[towcenter]<common>{ls}{\setboolean{@towcenter@letterspace}{true}}
+\DeclareOptionX[towcenter]<common>{nols}{\setboolean{@towcenter@letterspace}{false}}
 
 %%
 % `nobib' option -- doesn't load natbib or adjust the \cite command
-\newboolean{@tufte@loadnatbib}\setboolean{@tufte@loadnatbib}{true}
-\DeclareOptionX[tufte]<common>{nobib}{\setboolean{@tufte@loadnatbib}{false}}
+\newboolean{@towcenter@loadnatbib}\setboolean{@towcenter@loadnatbib}{true}
+\DeclareOptionX[towcenter]<common>{nobib}{\setboolean{@towcenter@loadnatbib}{false}}
 
 %%
 % `titlepage' option -- creates a full title page with \maketitle
 
-\newboolean{@tufte@titlepage}
-\DeclareOptionX[tufte]<common>{titlepage}{\setboolean{@tufte@titlepage}{true}}
-\DeclareOptionX[tufte]<common>{notitlepage}{\setboolean{@tufte@titlepage}{false}}
+\newboolean{@towcenter@titlepage}
+\DeclareOptionX[towcenter]<common>{titlepage}{\setboolean{@towcenter@titlepage}{true}}
+\DeclareOptionX[towcenter]<common>{notitlepage}{\setboolean{@towcenter@titlepage}{false}}
 
 %%
 % `a4paper' option
 
-\newboolean{@tufte@afourpaper}
-\DeclareOptionX[tufte]<common>{a4paper}{\setboolean{@tufte@afourpaper}{true}}
+\newboolean{@towcenter@afourpaper}
+\DeclareOptionX[towcenter]<common>{a4paper}{\setboolean{@towcenter@afourpaper}{true}}
 
 %%
 % `b5paper' option
 
-\newboolean{@tufte@bfivepaper}
-\DeclareOptionX[tufte]<common>{b5paper}{\setboolean{@tufte@bfivepaper}{true}}
+\newboolean{@towcenter@bfivepaper}
+\DeclareOptionX[towcenter]<common>{b5paper}{\setboolean{@towcenter@bfivepaper}{true}}
 
 %%
 % `sfsidenotes' option -- typesets sidenotes in sans serif typeface
 
-\newboolean{@tufte@sfsidenotes}
-\DeclareOptionX[tufte]<common>{sfsidenotes}{\setboolean{@tufte@sfsidenotes}{true}}
+\newboolean{@towcenter@sfsidenotes}
+\DeclareOptionX[towcenter]<common>{sfsidenotes}{\setboolean{@towcenter@sfsidenotes}{true}}
 
 %%
 % `symmetric' option -- puts marginpar space to the outside edge of the page
 %   Note: this option forces the twoside option (see the .cls files)
 
-\newboolean{@tufte@symmetric}
-\DeclareOptionX[tufte]<common>{symmetric}{
-  \setboolean{@tufte@symmetric}{true}
-  \@tufte@info@noline{The `symmetric' option implies `twoside'}
-  \ExecuteOptionsX[tufte]<common>{twoside}
+\newboolean{@towcenter@symmetric}
+\DeclareOptionX[towcenter]<common>{symmetric}{
+  \setboolean{@towcenter@symmetric}{true}
+  \@towcenter@info@noline{The `symmetric' option implies `twoside'}
+  \ExecuteOptionsX[towcenter]<common>{twoside}
 }
 
 %%
 % `twoside' option -- alternates running heads
 
-\newboolean{@tufte@twoside}
-\DeclareOptionX[tufte]<common>{twoside}{%
-  \setboolean{@tufte@twoside}{true}
-  \@tufte@info@noline{Passing the `twoside' option to the `\@tufte@class' class}
-  \PassOptionsToClass{twoside}{\@tufte@class}
+\newboolean{@towcenter@twoside}
+\DeclareOptionX[towcenter]<common>{twoside}{%
+  \setboolean{@towcenter@twoside}{true}
+  \@towcenter@info@noline{Passing the `twoside' option to the `\@towcenter@class' class}
+  \PassOptionsToClass{twoside}{\@towcenter@class}
 }
 
 %%
-% `notoc' option -- suppresses the Tufte-style table of contents
+% `notoc' option -- suppresses the towcenter-style table of contents
 
-\newboolean{@tufte@toc}
-\setboolean{@tufte@toc}{true}
-\DeclareOptionX[tufte]<common>{notoc}{\setboolean{@tufte@toc}{false}}
-\DeclareOptionX[tufte]<common>{toc}{\setboolean{@tufte@toc}{true}}
+\newboolean{@towcenter@toc}
+\setboolean{@towcenter@toc}{true}
+\DeclareOptionX[towcenter]<common>{notoc}{\setboolean{@towcenter@toc}{false}}
+\DeclareOptionX[towcenter]<common>{toc}{\setboolean{@towcenter@toc}{true}}
 
 %%
 % `justified' option -- uses fully justified text (flush left and flush
 % right) instead of ragged right.
 
-\newboolean{@tufte@justified}
-\DeclareOptionX[tufte]<common>{justified}{\setboolean{@tufte@justified}{true}}
+\newboolean{@towcenter@justified}
+\DeclareOptionX[towcenter]<common>{justified}{\setboolean{@towcenter@justified}{true}}
 
 %%
 % `bidi' option -- loads the bidi package for bi-directional text
 
-\newboolean{@tufte@loadbidi}
-\DeclareOptionX[tufte]<common>{bidi}{\setboolean{@tufte@loadbidi}{true}}
-\DeclareOptionX[tufte]<common>{nobidi}{\setboolean{@tufte@loadbidi}{false}}
+\newboolean{@towcenter@loadbidi}
+\DeclareOptionX[towcenter]<common>{bidi}{\setboolean{@towcenter@loadbidi}{true}}
+\DeclareOptionX[towcenter]<common>{nobidi}{\setboolean{@towcenter@loadbidi}{false}}
 
 %%
 % `nohyper' option -- suppresses loading of the hyperref package
 
-\newboolean{@tufte@loadhyper}
-\setboolean{@tufte@loadhyper}{true}
-\DeclareOptionX[tufte]<common>{hyper}{\setboolean{@tufte@loadhyper}{true}}
-\DeclareOptionX[tufte]<common>{nohyper}{\setboolean{@tufte@loadhyper}{false}}
+\newboolean{@towcenter@loadhyper}
+\setboolean{@towcenter@loadhyper}{true}
+\DeclareOptionX[towcenter]<common>{hyper}{\setboolean{@towcenter@loadhyper}{true}}
+\DeclareOptionX[towcenter]<common>{nohyper}{\setboolean{@towcenter@loadhyper}{false}}
 
 %%
 % `sidenote', `marginnote', `caption', `citation', `marginals' options
 % Each allows one of {justified,raggedleft,raggedright,raggedouter,auto}.
 
-\newcommand*{\@tufte@sidenote@justification}{\@tufte@justification@autodetect}
-\define@choicekey*+[tufte]{common}{sidenote}[\@tufte@kvtext\@tufte@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
-  \ifcase\@tufte@kvnum\relax
-    \renewcommand*{\@tufte@sidenote@justification}{\justifying}% justified
+\newcommand*{\@towcenter@sidenote@justification}{\@towcenter@justification@autodetect}
+\define@choicekey*+[towcenter]{common}{sidenote}[\@towcenter@kvtext\@towcenter@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
+  \ifcase\@towcenter@kvnum\relax
+    \renewcommand*{\@towcenter@sidenote@justification}{\justifying}% justified
   \or
-    \renewcommand*{\@tufte@sidenote@justification}{\RaggedLeft}% ragged left
+    \renewcommand*{\@towcenter@sidenote@justification}{\RaggedLeft}% ragged left
   \or
-    \renewcommand*{\@tufte@sidenote@justification}{\RaggedRight}% ragged right
+    \renewcommand*{\@towcenter@sidenote@justification}{\RaggedRight}% ragged right
   \or
-    \renewcommand*{\@tufte@sidenote@justification}{\@tufte@justification@outer}% ragged outer (flush right on verso pages, flush left on recto pages)
+    \renewcommand*{\@towcenter@sidenote@justification}{\@towcenter@justification@outer}% ragged outer (flush right on verso pages, flush left on recto pages)
   \or
-    \renewcommand*{\@tufte@sidenote@justification}{\@tufte@justification@autodetect}% autodetects best justification mode based on all class options
+    \renewcommand*{\@towcenter@sidenote@justification}{\@towcenter@justification@autodetect}% autodetects best justification mode based on all class options
   \fi
 }{%
-  \@tufte@warning@noline{Invalid option `#1' for sidenote key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
-  \renewcommand*{\@tufte@sidenote@justification}{\@tufte@justification@autodetect}% autodetects best justification mode based on all class options
+  \@towcenter@warning@noline{Invalid option `#1' for sidenote key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
+  \renewcommand*{\@towcenter@sidenote@justification}{\@towcenter@justification@autodetect}% autodetects best justification mode based on all class options
 }
 
-\newcommand*{\@tufte@marginnote@justification}{\@tufte@justification@autodetect}
-\define@choicekey*+[tufte]{common}{marginnote}[\@tufte@kvtext\@tufte@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
-  \ifcase\@tufte@kvnum\relax
-    \renewcommand*{\@tufte@marginnote@justification}{\justifying}% justified
+\newcommand*{\@towcenter@marginnote@justification}{\@towcenter@justification@autodetect}
+\define@choicekey*+[towcenter]{common}{marginnote}[\@towcenter@kvtext\@towcenter@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
+  \ifcase\@towcenter@kvnum\relax
+    \renewcommand*{\@towcenter@marginnote@justification}{\justifying}% justified
   \or
-    \renewcommand*{\@tufte@marginnote@justification}{\RaggedLeft}% ragged left
+    \renewcommand*{\@towcenter@marginnote@justification}{\RaggedLeft}% ragged left
   \or
-    \renewcommand*{\@tufte@marginnote@justification}{\RaggedRight}% ragged right
+    \renewcommand*{\@towcenter@marginnote@justification}{\RaggedRight}% ragged right
   \or
-    \renewcommand*{\@tufte@marginnote@justification}{\@tufte@justification@outer}% ragged outer (flush right on verso pages, flush left on recto pages)
+    \renewcommand*{\@towcenter@marginnote@justification}{\@towcenter@justification@outer}% ragged outer (flush right on verso pages, flush left on recto pages)
   \or
-    \renewcommand*{\@tufte@marginnote@justification}{\@tufte@justification@autodetect}% autodetects best justification mode based on all class options
+    \renewcommand*{\@towcenter@marginnote@justification}{\@towcenter@justification@autodetect}% autodetects best justification mode based on all class options
   \fi
 }{%
-  \@tufte@warning@noline{Invalid option `#1' for marginnote key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
-  \renewcommand*{\@tufte@marginnote@justification}{\@tufte@justification@autodetect}% autodetects best justification mode based on all class options
+  \@towcenter@warning@noline{Invalid option `#1' for marginnote key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
+  \renewcommand*{\@towcenter@marginnote@justification}{\@towcenter@justification@autodetect}% autodetects best justification mode based on all class options
 }
 
-\newcommand*{\@tufte@caption@justification}{\@tufte@justification@autodetect}
-\define@choicekey*+[tufte]{common}{caption}[\@tufte@kvtext\@tufte@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
-  \ifcase\@tufte@kvnum\relax
-    \renewcommand*{\@tufte@caption@justification}{\justifying}% justified
+\newcommand*{\@towcenter@caption@justification}{\@towcenter@justification@autodetect}
+\define@choicekey*+[towcenter]{common}{caption}[\@towcenter@kvtext\@towcenter@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
+  \ifcase\@towcenter@kvnum\relax
+    \renewcommand*{\@towcenter@caption@justification}{\justifying}% justified
   \or
-    \renewcommand*{\@tufte@caption@justification}{\RaggedLeft}% ragged left
+    \renewcommand*{\@towcenter@caption@justification}{\RaggedLeft}% ragged left
   \or
-    \renewcommand*{\@tufte@caption@justification}{\RaggedRight}% ragged right
+    \renewcommand*{\@towcenter@caption@justification}{\RaggedRight}% ragged right
   \or
-    \renewcommand*{\@tufte@caption@justification}{\@tufte@justification@caption@outer}% ragged outer (flush right on verso pages, flush left on recto pages)
+    \renewcommand*{\@towcenter@caption@justification}{\@towcenter@justification@caption@outer}% ragged outer (flush right on verso pages, flush left on recto pages)
   \or
-    \renewcommand*{\@tufte@caption@justification}{\@tufte@justification@autodetect}% autodetects best justification mode based on all class options
+    \renewcommand*{\@towcenter@caption@justification}{\@towcenter@justification@autodetect}% autodetects best justification mode based on all class options
   \fi
 }{%
-  \@tufte@warning@noline{Invalid option `#1' for caption key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
-  \renewcommand*{\@tufte@caption@justification}{\@tufte@justification@autodetect}% autodetects best justification mode based on all class options
+  \@towcenter@warning@noline{Invalid option `#1' for caption key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
+  \renewcommand*{\@towcenter@caption@justification}{\@towcenter@justification@autodetect}% autodetects best justification mode based on all class options
 }
 
-\newcommand*{\@tufte@citation@justification}{\@tufte@justification@autodetect}
-\define@choicekey*+[tufte]{common}{citation}[\@tufte@kvtext\@tufte@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
-  \ifcase\@tufte@kvnum\relax
-    \renewcommand*{\@tufte@citation@justification}{\justifying}% justified
+\newcommand*{\@towcenter@citation@justification}{\@towcenter@justification@autodetect}
+\define@choicekey*+[towcenter]{common}{citation}[\@towcenter@kvtext\@towcenter@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
+  \ifcase\@towcenter@kvnum\relax
+    \renewcommand*{\@towcenter@citation@justification}{\justifying}% justified
   \or
-    \renewcommand*{\@tufte@citation@justification}{\RaggedLeft}% ragged left
+    \renewcommand*{\@towcenter@citation@justification}{\RaggedLeft}% ragged left
   \or
-    \renewcommand*{\@tufte@citation@justification}{\RaggedRight}% ragged right
+    \renewcommand*{\@towcenter@citation@justification}{\RaggedRight}% ragged right
   \or
-    \renewcommand*{\@tufte@citation@justification}{\@tufte@justification@outer}% ragged outer (flush right on verso pages, flush left on recto pages)
+    \renewcommand*{\@towcenter@citation@justification}{\@towcenter@justification@outer}% ragged outer (flush right on verso pages, flush left on recto pages)
   \or
-    \renewcommand*{\@tufte@citation@justification}{\@tufte@justification@autodetect}% autodetects best justification mode based on all class options
+    \renewcommand*{\@towcenter@citation@justification}{\@towcenter@justification@autodetect}% autodetects best justification mode based on all class options
   \fi
 }{%
-  \@tufte@warning@noline{Invalid option `#1' for citation key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
-  \renewcommand*{\@tufte@citation@justification}{\@tufte@justification@autodetect}% autodetects best justification mode based on all class options
+  \@towcenter@warning@noline{Invalid option `#1' for citation key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
+  \renewcommand*{\@towcenter@citation@justification}{\@towcenter@justification@autodetect}% autodetects best justification mode based on all class options
 }
 
 % The ``marginals'' key simultaneously sets the same justification for all marginal material
-\define@choicekey*+[tufte]{common}{marginals}[\@tufte@kvtext\@tufte@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
-  \ifcase\@tufte@kvnum\relax
-    \ExecuteOptionsX[tufte]<common>{citation=justified,sidenote=justified,caption=justified,marginnote=justified}% justified
+\define@choicekey*+[towcenter]{common}{marginals}[\@towcenter@kvtext\@towcenter@kvnum]{justified,raggedleft,raggedright,raggedouter,auto}[auto]{%
+  \ifcase\@towcenter@kvnum\relax
+    \ExecuteOptionsX[towcenter]<common>{citation=justified,sidenote=justified,caption=justified,marginnote=justified}% justified
   \or
-    \ExecuteOptionsX[tufte]<common>{citation=raggedleft,sidenote=raggedleft,caption=raggedleft,marginnote=raggedleft}% ragged left
+    \ExecuteOptionsX[towcenter]<common>{citation=raggedleft,sidenote=raggedleft,caption=raggedleft,marginnote=raggedleft}% ragged left
   \or
-    \ExecuteOptionsX[tufte]<common>{citation=raggedright,sidenote=raggedright,caption=raggedright,marginnote=raggedright}% ragged right
+    \ExecuteOptionsX[towcenter]<common>{citation=raggedright,sidenote=raggedright,caption=raggedright,marginnote=raggedright}% ragged right
   \or
-    \ExecuteOptionsX[tufte]<common>{citation=raggedouter,sidenote=raggedouter,caption=raggedouter,marginnote=raggedouter}% ragged outer (flush right on verso pages, flush left on recto pages)
+    \ExecuteOptionsX[towcenter]<common>{citation=raggedouter,sidenote=raggedouter,caption=raggedouter,marginnote=raggedouter}% ragged outer (flush right on verso pages, flush left on recto pages)
   \or
-    \ExecuteOptionsX[tufte]<common>{citation=auto,sidenote=auto,caption=auto,marginnote=auto}% autodetects best justification mode based on all class options
+    \ExecuteOptionsX[towcenter]<common>{citation=auto,sidenote=auto,caption=auto,marginnote=auto}% autodetects best justification mode based on all class options
   \fi
 }{%
-  \@tufte@warning@noline{Invalid option `#1' for marginals key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
-  \ExecuteOptionsX[tufte]<common>{citation=auto,sidenote=auto,caption=auto,marginnote=auto}% autodetects best justification mode based on all class options
+  \@towcenter@warning@noline{Invalid option `#1' for marginals key. Must be one of: justified, raggedleft, raggedright, raggedouter, auto}
+  \ExecuteOptionsX[towcenter]<common>{citation=auto,sidenote=auto,caption=auto,marginnote=auto}% autodetects best justification mode based on all class options
 }
 
 
 %%
 % Unsupported options
 
-\newcommand{\@tufte@unsupported@option}[1]{\@tufte@warning@noline{Option `#1' is not supported -- ignoring option}\OptionNotUsed}
+\newcommand{\@towcenter@unsupported@option}[1]{\@towcenter@warning@noline{Option `#1' is not supported -- ignoring option}\OptionNotUsed}
 
-\DeclareOptionX[tufte]<common>{10pt}{\@tufte@unsupported@option{\CurrentOption}}
-\DeclareOptionX[tufte]<common>{11pt}{\@tufte@unsupported@option{\CurrentOption}}
-\DeclareOptionX[tufte]<common>{12pt}{\@tufte@unsupported@option{\CurrentOption}}
-\DeclareOptionX[tufte]<common>{a5paper}{\@tufte@unsupported@option{\CurrentOption}}
-\DeclareOptionX[tufte]<common>{executivepaper}{\@tufte@unsupported@option{\CurrentOption}}
-\DeclareOptionX[tufte]<common>{legalpaper}{\@tufte@unsupported@option{\CurrentOption}}
-\DeclareOptionX[tufte]<common>{landscape}{\@tufte@unsupported@option{\CurrentOption}}
-\DeclareOptionX[tufte]<common>{onecolumn}{\@tufte@unsupported@option{\CurrentOption}}
-\DeclareOptionX[tufte]<common>{twocolumn}{\@tufte@unsupported@option{\CurrentOption}}
+\DeclareOptionX[towcenter]<common>{10pt}{\@towcenter@unsupported@option{\CurrentOption}}
+\DeclareOptionX[towcenter]<common>{11pt}{\@towcenter@unsupported@option{\CurrentOption}}
+\DeclareOptionX[towcenter]<common>{12pt}{\@towcenter@unsupported@option{\CurrentOption}}
+\DeclareOptionX[towcenter]<common>{a5paper}{\@towcenter@unsupported@option{\CurrentOption}}
+\DeclareOptionX[towcenter]<common>{executivepaper}{\@towcenter@unsupported@option{\CurrentOption}}
+\DeclareOptionX[towcenter]<common>{legalpaper}{\@towcenter@unsupported@option{\CurrentOption}}
+\DeclareOptionX[towcenter]<common>{landscape}{\@towcenter@unsupported@option{\CurrentOption}}
+\DeclareOptionX[towcenter]<common>{onecolumn}{\@towcenter@unsupported@option{\CurrentOption}}
+\DeclareOptionX[towcenter]<common>{twocolumn}{\@towcenter@unsupported@option{\CurrentOption}}
 
 %%
 % Default `book' and `handout' options
 
-\ifthenelse{\equal{\@tufte@pkgname}{tufte-book}}
-  {\ExecuteOptionsX[tufte]<common>{titlepage}}
-  {\ExecuteOptionsX[tufte]<common>{notitlepage}}
+\ifthenelse{\equal{\@towcenter@pkgname}{towcenter-book}}
+  {\ExecuteOptionsX[towcenter]<common>{titlepage}}
+  {\ExecuteOptionsX[towcenter]<common>{notitlepage}}
 
 
 \DeclareOptionX*{%
-  \@tufte@info@noline{Passing \CurrentOption\space to the `\@tufte@class' class.}%
-  \PassOptionsToClass{\CurrentOption}{\@tufte@class}%
+  \@towcenter@info@noline{Passing \CurrentOption\space to the `\@towcenter@class' class.}%
+  \PassOptionsToClass{\CurrentOption}{\@towcenter@class}%
 }
-\ProcessOptionsX*[tufte]<common>\relax
+\ProcessOptionsX*[towcenter]<common>\relax
 
 %%
 % Load the appropriate base class
-\@tufte@info@noline{Loading the base class `\@tufte@class'}
-\LoadClass{\@tufte@class}
+\@towcenter@info@noline{Loading the base class `\@towcenter@class'}
+\LoadClass{\@towcenter@class}
 
 %%
 % Detect whether we're in two-side mode or not.  (Used to set up running
 % heads later.)
 
 \ifthenelse{\boolean{@twoside}}
-  {\setboolean{@tufte@twoside}{true}}
+  {\setboolean{@towcenter@twoside}{true}}
   {}
 
 
@@ -262,47 +262,47 @@
 %%
 % Detect if we're using pdfLaTeX
 
-\newboolean{@tufte@pdf}
+\newboolean{@towcenter@pdf}
 \IfFileExists{ifpdf.sty}{%
   \RequirePackage{ifpdf}
   \ifthenelse{\boolean{pdf}}
-    {\setboolean{@tufte@pdf}{true}}
-    {\setboolean{@tufte@pdf}{false}}
+    {\setboolean{@towcenter@pdf}{true}}
+    {\setboolean{@towcenter@pdf}{false}}
 }{% assume we're not using pdfTex?
-  \setboolean{@tufte@pdf}{false}
+  \setboolean{@towcenter@pdf}{false}
 }
 
 %%
 % Detect if we're using XeLaTeX
 
-\newboolean{@tufte@xetex}
+\newboolean{@towcenter@xetex}
 \IfFileExists{ifxetex.sty}{%
   \RequirePackage{ifxetex}
   \ifthenelse{\boolean{xetex}}
-    {\setboolean{@tufte@xetex}{true}}
-    {\setboolean{@tufte@xetex}{false}}
+    {\setboolean{@towcenter@xetex}{true}}
+    {\setboolean{@towcenter@xetex}{false}}
 }{% not using xelatex
-  \setboolean{@tufte@xetex}{false}
+  \setboolean{@towcenter@xetex}{false}
 }
 
-\ifthenelse{\boolean{@tufte@xetex}}{%
+\ifthenelse{\boolean{@towcenter@xetex}}{%
   \RequirePackage{xltxtra}% xltxtra loads xunicode and fontspec; must be loaded before bidi
 }{}
 
 %%
 % Detect if we're using LuaTeX
 
-\newboolean{@tufte@luatex}
+\newboolean{@towcenter@luatex}
 \IfFileExists{ifluatex.sty}{%
   \RequirePackage{ifluatex}
   \ifthenelse{\boolean{luatex}}
-    {\setboolean{@tufte@luatex}{true}}
-    {\setboolean{@tufte@luatex}{false}}
+    {\setboolean{@towcenter@luatex}{true}}
+    {\setboolean{@towcenter@luatex}{false}}
 }{% not using luatex
-  \setboolean{@tufte@luatex}{false}
+  \setboolean{@towcenter@luatex}{false}
 }
 
-\ifthenelse{\boolean{@tufte@luatex}}{%
+\ifthenelse{\boolean{@towcenter@luatex}}{%
   \RequirePackage{fontspec}
   \RequirePackage[osf,sc]{mathpazo}
   \setmainfont[Renderer=Basic, Numbers=OldStyle, Scale = 1.0]{TeX Gyre Pagella}
@@ -341,8 +341,8 @@
 %%%
 %% Loads the hyperref package and sets some default options.
 
-\newcommand{\TufteLoadHyperref}{%
-  \ifthenelse{\boolean{@tufte@xetex}}
+\newcommand{\towcenterLoadHyperref}{%
+  \ifthenelse{\boolean{@towcenter@xetex}}
     {\RequirePackage[unicode,hyperfootnotes=false,xetex]{hyperref}}
     {\RequirePackage[unicode,hyperfootnotes=false]{hyperref}}
   \hypersetup{%
@@ -357,14 +357,14 @@
 %%%
 %% Load the `hyperref' package.
 
-\ifthenelse{\boolean{@tufte@loadhyper}}{%
-  \TufteLoadHyperref%
+\ifthenelse{\boolean{@towcenter@loadhyper}}{%
+  \towcenterLoadHyperref%
 }{% hyperfootnotes override our modifications to the \footnote* and \@footnote* commands.
   \PassOptionsToPackage{hyperfootnotes=false}{hyperref}
 }
 
 %%
-% Set the font sizes and baselines to match Tufte's books
+% Set the font sizes and baselines to match towcenter's books
 \renewcommand\normalsize{%
    \@setfontsize\normalsize\@xpt{14}%
    \abovedisplayskip 10\p@ \@plus2\p@ \@minus5\p@
@@ -423,16 +423,16 @@
 \setlength{\RaggedRightRightskip}{\z@ plus 0.08\hsize}
 
 % Paragraph indentation and separation for normal text
-\newcommand{\@tufte@reset@par}{%
+\newcommand{\@towcenter@reset@par}{%
   \setlength{\RaggedRightParindent}{1.0pc}%
   \setlength{\JustifyingParindent}{1.0pc}%
   \setlength{\parindent}{1pc}%
   \setlength{\parskip}{0pt}%
 }
-\@tufte@reset@par
+\@towcenter@reset@par
 
 % Paragraph indentation and separation for marginal text
-\newcommand{\@tufte@margin@par}{%
+\newcommand{\@towcenter@margin@par}{%
   \setlength{\RaggedRightParindent}{0.5pc}%
   \setlength{\JustifyingParindent}{0.5pc}%
   \setlength{\parindent}{0.5pc}%
@@ -445,15 +445,15 @@
 
 \RequirePackage[letterpaper,left=1in,top=1in,headsep=2\baselineskip,textwidth=26pc,marginparsep=2pc,marginparwidth=12pc,textheight=44\baselineskip,headheight=\baselineskip]{geometry}
 
-\ifthenelse{\boolean{@tufte@afourpaper}}
+\ifthenelse{\boolean{@towcenter@afourpaper}}
   {\geometry{a4paper,left=24.8mm,top=27.4mm,headsep=2\baselineskip,textwidth=107mm,marginparsep=8.2mm,marginparwidth=49.4mm,textheight=49\baselineskip,headheight=\baselineskip}}
   {}
 
-\ifthenelse{\boolean{@tufte@bfivepaper}}
+\ifthenelse{\boolean{@towcenter@bfivepaper}}
   {\geometry{paperwidth=176mm,paperheight=250mm,left=14.66mm,top=13.88mm,textwidth=102.66mm,marginparsep=7.33mm,marginparwidth=36.66mm,textheight=38\baselineskip,includehead}}
   {}
 
-\ifthenelse{\boolean{@tufte@symmetric}}
+\ifthenelse{\boolean{@towcenter@symmetric}}
   {}
   {\geometry{asymmetric}}% forces internal LaTeX `twoside'
 
@@ -466,25 +466,25 @@
 %%
 % Font for margin items
 
-\ifthenelse{\boolean{@tufte@sfsidenotes}}
-  {\newcommand{\@tufte@marginfont}{\normalfont\footnotesize\sffamily}}
-  {\newcommand{\@tufte@marginfont}{\normalfont\footnotesize}}
+\ifthenelse{\boolean{@towcenter@sfsidenotes}}
+  {\newcommand{\@towcenter@marginfont}{\normalfont\footnotesize\sffamily}}
+  {\newcommand{\@towcenter@marginfont}{\normalfont\footnotesize}}
 
-\newcommand*{\@tufte@sidenote@font}{\@tufte@marginfont}
-\newcommand*{\@tufte@caption@font}{\@tufte@marginfont}
-\newcommand*{\@tufte@marginnote@font}{\@tufte@marginfont}
-\newcommand*{\@tufte@citation@font}{\@tufte@marginfont}
+\newcommand*{\@towcenter@sidenote@font}{\@towcenter@marginfont}
+\newcommand*{\@towcenter@caption@font}{\@towcenter@marginfont}
+\newcommand*{\@towcenter@marginnote@font}{\@towcenter@marginfont}
+\newcommand*{\@towcenter@citation@font}{\@towcenter@marginfont}
 
-\newcommand*{\setsidenotefont}[1]{\renewcommand*{\@tufte@sidenote@font}{#1}}
-\newcommand*{\setcaptionfont}[1]{\renewcommand*{\@tufte@caption@font}{#1}}
-\newcommand*{\setmarginnotefont}[1]{\renewcommand*{\@tufte@marginnote@font}{#1}}
-\newcommand*{\setcitationfont}[1]{\renewcommand*{\@tufte@citation@font}{#1}}
+\newcommand*{\setsidenotefont}[1]{\renewcommand*{\@towcenter@sidenote@font}{#1}}
+\newcommand*{\setcaptionfont}[1]{\renewcommand*{\@towcenter@caption@font}{#1}}
+\newcommand*{\setmarginnotefont}[1]{\renewcommand*{\@towcenter@marginnote@font}{#1}}
+\newcommand*{\setcitationfont}[1]{\renewcommand*{\@towcenter@citation@font}{#1}}
 
 %%
 % Set the justification baesed on the `justified' class option
 
-\newcommand{\@tufte@justification}{%
-  \ifthenelse{\boolean{@tufte@justified}}%
+\newcommand{\@towcenter@justification}{%
+  \ifthenelse{\boolean{@towcenter@justified}}%
     {\justifying}%
     {\RaggedRight}%
 }
@@ -503,33 +503,33 @@
 %%
 % To implement full-width display environments
 
-\newboolean{@tufte@changepage}
+\newboolean{@towcenter@changepage}
 \IfFileExists{changepage.sty}{%
-  \@tufte@debug@info@noline{Found changepage.sty}
+  \@towcenter@debug@info@noline{Found changepage.sty}
   \RequirePackage[strict]{changepage}
-  \setboolean{@tufte@changepage}{true}
+  \setboolean{@towcenter@changepage}{true}
 }{%
-  \@tufte@debug@info@noline{Found chngpage.sty}
+  \@towcenter@debug@info@noline{Found chngpage.sty}
   \RequirePackage[strict]{chngpage}
-  \setboolean{@tufte@changepage}{false}
+  \setboolean{@towcenter@changepage}{false}
 }
 
 % Write our own aliases for the \checkoddpage and \ifoddpage or \ifcpoddpage commands
-\newboolean{@tufte@odd@page}
-\setboolean{@tufte@odd@page}{true}
-\newcommand*{\@tufte@checkoddpage}{%
+\newboolean{@towcenter@odd@page}
+\setboolean{@towcenter@odd@page}{true}
+\newcommand*{\@towcenter@checkoddpage}{%
   \checkoddpage%
-  \ifthenelse{\boolean{@tufte@changepage}}{%
+  \ifthenelse{\boolean{@towcenter@changepage}}{%
     \ifoddpage%
-      \setboolean{@tufte@odd@page}{true}%
+      \setboolean{@towcenter@odd@page}{true}%
     \else%
-      \setboolean{@tufte@odd@page}{false}%
+      \setboolean{@towcenter@odd@page}{false}%
     \fi%
   }{%
     \ifcpoddpage%
-      \setboolean{@tufte@odd@page}{true}%
+      \setboolean{@towcenter@odd@page}{true}%
     \else%
-      \setboolean{@tufte@odd@page}{false}%
+      \setboolean{@towcenter@odd@page}{false}%
     \fi%
   }%
 }
@@ -537,23 +537,23 @@
 %%
 % Compute lengths used for full-width displays
 
-\newlength{\@tufte@overhang}% used by the fullwidth environment and the running heads
-\newlength{\@tufte@fullwidth}
-\newlength{\@tufte@caption@fill}
+\newlength{\@towcenter@overhang}% used by the fullwidth environment and the running heads
+\newlength{\@towcenter@fullwidth}
+\newlength{\@towcenter@caption@fill}
 
-\newcommand{\TufteRecalculate}{%
-  \setlength{\@tufte@overhang}{\marginparwidth}
-  \addtolength{\@tufte@overhang}{\marginparsep}
+\newcommand{\towcenterRecalculate}{%
+  \setlength{\@towcenter@overhang}{\marginparwidth}
+  \addtolength{\@towcenter@overhang}{\marginparsep}
 
-  \setlength{\@tufte@fullwidth}{\textwidth}
-  \addtolength{\@tufte@fullwidth}{\marginparsep}
-  \addtolength{\@tufte@fullwidth}{\marginparwidth}
+  \setlength{\@towcenter@fullwidth}{\textwidth}
+  \addtolength{\@towcenter@fullwidth}{\marginparsep}
+  \addtolength{\@towcenter@fullwidth}{\marginparwidth}
 
-  \setlength{\@tufte@caption@fill}{\textwidth}
-  \addtolength{\@tufte@caption@fill}{\marginparsep}
+  \setlength{\@towcenter@caption@fill}{\textwidth}
+  \addtolength{\@towcenter@caption@fill}{\marginparsep}
 }
 
-\AtBeginDocument{\TufteRecalculate}
+\AtBeginDocument{\towcenterRecalculate}
 
 %%
 % Modified \title, \author, and \date commands.  These store the
@@ -657,8 +657,8 @@
 \DeclareTextFontCommand{\textsmallcaps}{\scshape}
 
 \RequirePackage{textcase} % provides \MakeTextUppercase and \MakeTextLowercase
-\def\allcapsspacing{\@tufte@warning{Proper spacing of ALL-CAPS letters has not been set up.}}
-\def\smallcapsspacing{\@tufte@warning{Proper spacing of small-caps letters has not been set up.}}
+\def\allcapsspacing{\@towcenter@warning{Proper spacing of ALL-CAPS letters has not been set up.}}
+\def\smallcapsspacing{\@towcenter@warning{Proper spacing of small-caps letters has not been set up.}}
 \newcommand{\allcaps}[1]{\allcapsspacing{\MakeTextUppercase{#1}}}
 \newcommand{\smallcaps}[1]{\smallcapsspacing{\MakeTextLowercase{#1}}}
 
@@ -667,16 +667,16 @@
 % If we're using XeLaTeX, use XeLaTeX letterspacing options.
 % Otherwise fall back on the soul package.
 
-\ifthenelse{\boolean{@tufte@pdf}}
-  {\@tufte@debug@info@noline{ifpdf = true}}
-  {\@tufte@debug@info@noline{ifpdf = false}}
+\ifthenelse{\boolean{@towcenter@pdf}}
+  {\@towcenter@debug@info@noline{ifpdf = true}}
+  {\@towcenter@debug@info@noline{ifpdf = false}}
 
-\ifthenelse{\boolean{@tufte@xetex}}
-  {\@tufte@debug@info@noline{ifxetex = true}}
-  {\@tufte@debug@info@noline{ifxetex = false}}
+\ifthenelse{\boolean{@towcenter@xetex}}
+  {\@towcenter@debug@info@noline{ifxetex = true}}
+  {\@towcenter@debug@info@noline{ifxetex = false}}
 
 % Check pdfLaTeX version
-\def\@tufte@pdftexversion{0}
+\def\@towcenter@pdftexversion{0}
 \ifx\normalpdftexversion\@undefined \else
   \let\pdftexversion \normalpdftexversion
   \let\pdftexrevision\normalpdftexrevision
@@ -684,21 +684,21 @@
 \fi
 \ifx\pdftexversion\@undefined \else
   \ifx\pdftexversion\relax \else
-    \def\@tufte@pdftexversion{6}
+    \def\@towcenter@pdftexversion{6}
     \ifnum\pdftexversion < 140
-      \def\@tufte@pdftexversion{5}
+      \def\@towcenter@pdftexversion{5}
     \fi
   \fi
 \fi
 
-\newboolean{@tufte@letterspace@pkg@prereqs}
-\setboolean{@tufte@letterspace@pkg@prereqs}{true}
-\ifnum\@tufte@pdftexversion<6
-  \setboolean{@tufte@letterspace@pkg@prereqs}{false}
+\newboolean{@towcenter@letterspace@pkg@prereqs}
+\setboolean{@towcenter@letterspace@pkg@prereqs}{true}
+\ifnum\@towcenter@pdftexversion<6
+  \setboolean{@towcenter@letterspace@pkg@prereqs}{false}
 \fi
 
 
-\newcommand{\@tufte@letterspacing@soul}{%
+\newcommand{\@towcenter@letterspacing@soul}{%
   \RequirePackage{soul}%
   \sodef\allcapsspacing{}{0.15em}{0.65em}{0.6em}%
   \sodef\smallcapsspacing{}{0.075em}{0.5em}{0.6em}%
@@ -708,8 +708,8 @@
   \renewcommand{\textsc}[1]{\sotextsc{##1}}%
 }
 
-\newcommand{\@tufte@letterspacing@letterspace}{%
-  \@tufte@debug@info@noline{Modern version of pdfTeX detected. Using `letterspace' package}%
+\newcommand{\@towcenter@letterspacing@letterspace}{%
+  \@towcenter@debug@info@noline{Modern version of pdfTeX detected. Using `letterspace' package}%
   \RequirePackage{letterspace}%
   % Set up letterspacing (using microtype package) -- requires pdfTeX v1.40+
   \renewcommand{\allcapsspacing}[1]{\textls[200]{##1}}%
@@ -719,39 +719,39 @@
   \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{##1}}}%
 }
 
-\ifthenelse{\boolean{@tufte@letterspace}}{%
-  \ifthenelse{\boolean{@tufte@pdf}\AND\boolean{@tufte@letterspace@pkg@prereqs}\AND\NOT\boolean{@tufte@xetex}}{%
+\ifthenelse{\boolean{@towcenter@letterspace}}{%
+  \ifthenelse{\boolean{@towcenter@pdf}\AND\boolean{@towcenter@letterspace@pkg@prereqs}\AND\NOT\boolean{@towcenter@xetex}}{%
     % load letterspace pkg
     \IfFileExists{letterspace.sty}{%
-      \@tufte@letterspacing@letterspace
+      \@towcenter@letterspacing@letterspace
     }{}%
   }{}%
   % load soul pkg
   \@ifpackageloaded{letterspace}{}{%
     \IfFileExists{soul.sty}{%
-      \@tufte@letterspacing@soul
+      \@towcenter@letterspacing@soul
     }{%
-      \@tufte@warning@noline{Couldn't locate `soul' package}%
+      \@towcenter@warning@noline{Couldn't locate `soul' package}%
     }% soul not installed... giving up.
   }%
 }{}
 
-%\ifthenelse{\boolean{@tufte@letterspace}}{%
+%\ifthenelse{\boolean{@towcenter@letterspace}}{%
   %\ifthenelse{\boolean{pdf}}{%
-    %\ifthenelse{\NOT\boolean{@tufte@letterspace@pkg@prereqs}}{%
+    %\ifthenelse{\NOT\boolean{@towcenter@letterspace@pkg@prereqs}}{%
       %% pdfLaTeX version is too old or not using pdfLaTeX
-      %\ifthenelse{\boolean{@tufte@xetex}}{%
+      %\ifthenelse{\boolean{@towcenter@xetex}}{%
         %% TODO use xetex letterspacing
-        %\@tufte@debug@info@noline{XeTeX detected. Reverting to `soul' package for letterspacing}%
-        %\@tufte@loadsoul%
+        %\@towcenter@debug@info@noline{XeTeX detected. Reverting to `soul' package for letterspacing}%
+        %\@towcenter@loadsoul%
       %}{%
         %% use `soul' package for letterspacing
-        %\@tufte@debug@info@noline{Old version of pdfTeX detected. Reverting to `soul' package for letterspacing}%
-        %\@tufte@loadsoul%
+        %\@towcenter@debug@info@noline{Old version of pdfTeX detected. Reverting to `soul' package for letterspacing}%
+        %\@towcenter@loadsoul%
       %}
     %}{%
       %\IfFileExists{letterspace.sty}{%
-        %\@tufte@debug@info@noline{Modern version of pdfTeX detected. Using `letterspace' package}
+        %\@towcenter@debug@info@noline{Modern version of pdfTeX detected. Using `letterspace' package}
         %\RequirePackage{letterspace}
         %% Set up letterspacing (using microtype package) -- requires pdfTeX v1.40+
         %\renewcommand{\allcapsspacing}[1]{\textls[200]{##1}}
@@ -760,13 +760,13 @@
         %\renewcommand{\smallcaps}[1]{\smallcapsspacing{\MakeTextLowercase{##1}}}
         %\renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{##1}}}
       %}{% microtype failed, check for soul
-        %\@tufte@debug@info@noline{Modern version of pdfTeX detected, but `letterspace' package not installed.  Reverting to  `soul' package for letterspacing}
-        %\@tufte@loadsoul
+        %\@towcenter@debug@info@noline{Modern version of pdfTeX detected, but `letterspace' package not installed.  Reverting to  `soul' package for letterspacing}
+        %\@towcenter@loadsoul
       %}%
     %}%
   %}{%
-    %\@tufte@debug@info@noline{Plain LaTeX detected. Using `soul' package for letterspacing}
-    %\@tufte@loadsoul
+    %\@towcenter@debug@info@noline{Plain LaTeX detected. Using `soul' package for letterspacing}
+    %\@towcenter@loadsoul
   %}
 %}{%
 %% we're not to load letterspacing, so do nothing
@@ -777,7 +777,7 @@
 % An environment for paragraph-style section
 
 \providecommand\newthought[1]{%
-   \tuftebreak
+   \towcenterbreak
    \noindent\textsc{#1}%
 }
 
@@ -827,10 +827,10 @@
 % Load the bidi package if instructed to do so.  This package must be loaded
 % prior to our redefining the \footnote and \cite commands.
 
-\ifthenelse{\boolean{@tufte@loadbidi}}{%
+\ifthenelse{\boolean{@towcenter@loadbidi}}{%
   \AtBeginDocument{%
     \RequirePackage{bidi}
-    \@tufte@pkghook@post@bidi%
+    \@towcenter@pkghook@post@bidi%
   }%
 }{}
 
@@ -838,11 +838,11 @@
 %%
 % A function that removes leading and trailling spaces from the supplied macro.
 % Based on code written by Michael Downes (See ``Around the Bend'', #15.)
-% Executing \@tufte@trim@spaces\xyzzy will result in the contents of \xyzzy
+% Executing \@towcenter@trim@spaces\xyzzy will result in the contents of \xyzzy
 % being trimmed of leading and trailing white space.
 
 \catcode`\Q=3
-\def\@tufte@trim@spaces#1{%
+\def\@towcenter@trim@spaces#1{%
   % Use grouping to emulate a multi-token afterassignment queue
   \begingroup%
   % Put `\toks 0 {' into the afterassignment queue
@@ -850,27 +850,27 @@
   % Apply \trimb to the replacement text of #1, adding a leading
   % \noexpand to prevent brace stripping and to serve another purpose
   % later.
-  \expandafter\@tufte@trim@b\expandafter\noexpand#1Q Q}%
+  \expandafter\@towcenter@trim@b\expandafter\noexpand#1Q Q}%
   % Transfer the trimmed text back into #1.
   \edef#1{\the\toks0}%
 }
 
-% \trimb removes a trailing space if present, then calls \@tufte@trim@c to
+% \trimb removes a trailing space if present, then calls \@towcenter@trim@c to
 % clean up any leftover bizarre Qs, and trim a leading space. In
 % order for \trimc to work properly we need to put back a Q first.
-\def\@tufte@trim@b#1 Q{\@tufte@trim@c#1Q}
+\def\@towcenter@trim@b#1 Q{\@towcenter@trim@c#1Q}
 
 % Execute \vfuzz assignment to remove leading space; the \noexpand
 % will now prevent unwanted expansion of a macro or other expandable
 % token at the beginning of the trimmed text. The \endgroup will feed
 % in the \aftergroup tokens after the \vfuzz assignment is completed.
-\def\@tufte@trim@c#1Q#2{\afterassignment\endgroup \vfuzz\the\vfuzz#1}
+\def\@towcenter@trim@c#1Q#2{\afterassignment\endgroup \vfuzz\the\vfuzz#1}
 \catcode`\Q=11
 
 %%
 % Citations should go in the margin as sidenotes
 
-\ifthenelse{\boolean{@tufte@loadnatbib}}{%
+\ifthenelse{\boolean{@towcenter@loadnatbib}}{%
   \RequirePackage{natbib}%
   \RequirePackage{bibentry}% allows bibitems to be typeset outside thebibliography environment
   % Redefine the \BR@b@bibitem command to fix a bug with bibentry+chicago style
@@ -893,21 +893,21 @@
 %%
 % Margin float environment
 
-\newsavebox{\@tufte@margin@floatbox}
-\newenvironment{@tufte@margin@float}[2][-1.2ex]%
+\newsavebox{\@towcenter@margin@floatbox}
+\newenvironment{@towcenter@margin@float}[2][-1.2ex]%
   {\FloatBarrier% process all floats before this point so the figure/table numbers stay in order.
-  \begin{lrbox}{\@tufte@margin@floatbox}%
+  \begin{lrbox}{\@towcenter@margin@floatbox}%
   \begin{minipage}{\marginparwidth}%
-    \@tufte@caption@font%
+    \@towcenter@caption@font%
     \def\@captype{#2}%
     \hbox{}\vspace*{#1}%
-    \@tufte@caption@justification%
-    \@tufte@margin@par%
+    \@towcenter@caption@justification%
+    \@towcenter@margin@par%
     \noindent%
   }
   {\end{minipage}%
   \end{lrbox}%
-  \marginpar{\usebox{\@tufte@margin@floatbox}}%
+  \marginpar{\usebox{\@towcenter@margin@floatbox}}%
   }
 
 
@@ -915,23 +915,23 @@
 % Margin figure environment
 
 \newenvironment{marginfigure}[1][-1.2ex]%
-  {\begin{@tufte@margin@float}[#1]{figure}}
-  {\end{@tufte@margin@float}}
+  {\begin{@towcenter@margin@float}[#1]{figure}}
+  {\end{@towcenter@margin@float}}
 
 
 %%
 % Margin table environment
 
 \newenvironment{margintable}[1][-1.2ex]%
-  {\begin{@tufte@margin@float}[#1]{table}}
-  {\end{@tufte@margin@float}}
+  {\begin{@towcenter@margin@float}[#1]{table}}
+  {\end{@towcenter@margin@float}}
 
 
 %%
 % Auto-detects the proper text alignment based on the various class options
 
-\newcommand*{\@tufte@justification@autodetect}{%
-  \ifthenelse{\boolean{@tufte@justified}}%
+\newcommand*{\@towcenter@justification@autodetect}{%
+  \ifthenelse{\boolean{@towcenter@justified}}%
     {\justifying}%
     {\RaggedRight}%
 }
@@ -940,15 +940,15 @@
 % Forces the outer edge of the caption to be set ragged.  
 % Therefore, on verso pages it's ragged left, and on recto pages it's ragged right.
 
-\newcommand*{\@tufte@justification@caption@outer}{%
-  \ifthenelse{\boolean{@tufte@float@recto}}%
+\newcommand*{\@towcenter@justification@caption@outer}{%
+  \ifthenelse{\boolean{@towcenter@float@recto}}%
     {\RaggedRight}%
     {\RaggedLeft}%
 }
 
-\newcommand*{\@tufte@justification@outer}{%
-  \@tufte@checkoddpage%
-  \ifthenelse{\boolean{@tufte@odd@page}}%
+\newcommand*{\@towcenter@justification@outer}{%
+  \@towcenter@checkoddpage%
+  \ifthenelse{\boolean{@towcenter@odd@page}}%
     {\RaggedRight}%
     {\RaggedLeft}%
 }
@@ -956,170 +956,170 @@
 
 
 %%
-% A collection of macros to be used with the new Tufte-style float environments.
+% A collection of macros to be used with the new towcenter-style float environments.
 % \setfloatalignment forces the caption placement to be treated as top, bottom, etc.
 % \forcerectofloat forces the float to be treated as if it were appearing on a recto page.
 % \forceversofloat does the same, but for verso pages.
 
-\newcommand{\@tufte@float@debug@info}{}% contains debug info generated as the float is processed
-\newcommand{\@tufte@float@debug}[1]{% adds debug info to the queue for output
-  \ifthenelse{\equal{\@tufte@float@debug@info}{}}%
-    {\def\@tufte@float@debug@info{#1}}%
-    {\g@addto@macro\@tufte@float@debug@info{\MessageBreak#1}}%
+\newcommand{\@towcenter@float@debug@info}{}% contains debug info generated as the float is processed
+\newcommand{\@towcenter@float@debug}[1]{% adds debug info to the queue for output
+  \ifthenelse{\equal{\@towcenter@float@debug@info}{}}%
+    {\def\@towcenter@float@debug@info{#1}}%
+    {\g@addto@macro\@towcenter@float@debug@info{\MessageBreak#1}}%
 }
 
 \newcommand{\floatalignment}{x}% holds the current float alignment (t, b, h, p)
-\newcommand{\setfloatalignment}[1]{\global\def\floatalignment{#1}\@tufte@float@debug{Forcing position: [#1]}}% manually sets the float alignment
-\newboolean{@tufte@float@recto}
-\newcommand{\forcerectofloat}{\gsetboolean{@tufte@float@recto}{true}\@tufte@float@debug{Forcing page: [recto]}}
-\newcommand{\forceversofloat}{\gsetboolean{@tufte@float@recto}{false}\@tufte@float@debug{Forcing page: [verso]}}
+\newcommand{\setfloatalignment}[1]{\global\def\floatalignment{#1}\@towcenter@float@debug{Forcing position: [#1]}}% manually sets the float alignment
+\newboolean{@towcenter@float@recto}
+\newcommand{\forcerectofloat}{\gsetboolean{@towcenter@float@recto}{true}\@towcenter@float@debug{Forcing page: [recto]}}
+\newcommand{\forceversofloat}{\gsetboolean{@towcenter@float@recto}{false}\@towcenter@float@debug{Forcing page: [verso]}}
 
 % Boxes to temporarily store our float and caption
-\newsavebox{\@tufte@figure@box}
-\newsavebox{\@tufte@caption@box}
+\newsavebox{\@towcenter@figure@box}
+\newsavebox{\@towcenter@caption@box}
 
 % Save original LaTeX float environment
-\let\@tufte@orig@float\@float
-\let\@tufte@orig@endfloat\end@float
+\let\@towcenter@orig@float\@float
+\let\@towcenter@orig@endfloat\end@float
 
 % New length for tweaking float captions
-\newlength{\@tufte@caption@vertical@offset}
-\setlength{\@tufte@caption@vertical@offset}{0pt}
+\newlength{\@towcenter@caption@vertical@offset}
+\setlength{\@towcenter@caption@vertical@offset}{0pt}
 
 % Store the caption and label contents
-\newcommand{\@tufte@stored@shortcaption}{}
-\newcommand{\@tufte@stored@caption}{}
-\newcommand{\@tufte@stored@label}{}
+\newcommand{\@towcenter@stored@shortcaption}{}
+\newcommand{\@towcenter@stored@caption}{}
+\newcommand{\@towcenter@stored@label}{}
 
-\long\def\@tufte@caption[#1][#2]#3{%
+\long\def\@towcenter@caption[#1][#2]#3{%
   \ifthenelse{\isempty{#1}}%
-    {\gdef\@tufte@stored@shortcaption{#3}}%
-    {\gdef\@tufte@stored@shortcaption{#1}}%
-  \gsetlength{\@tufte@caption@vertical@offset}{-#2}% we want a positive offset to lower captions
-  \gdef\@tufte@stored@caption{#3}%
+    {\gdef\@towcenter@stored@shortcaption{#3}}%
+    {\gdef\@towcenter@stored@shortcaption{#1}}%
+  \gsetlength{\@towcenter@caption@vertical@offset}{-#2}% we want a positive offset to lower captions
+  \gdef\@towcenter@stored@caption{#3}%
 }
 
-\newcommand{\@tufte@label}[1]{%
-  \gdef\@tufte@stored@label{#1}%
+\newcommand{\@towcenter@label}[1]{%
+  \gdef\@towcenter@stored@label{#1}%
 }
 
-\newcommand{\@tufte@fps}{}
+\newcommand{\@towcenter@fps}{}
 
-\newboolean{@tufte@float@star}
-\newlength{\@tufte@float@contents@width}
+\newboolean{@towcenter@float@star}
+\newlength{\@towcenter@float@contents@width}
 
 %%
 % Define a float environment to place the captions in the margin space
 
-\newenvironment{@tufte@float}[3][htbp]%
-  {% begin @tufte@float
+\newenvironment{@towcenter@float}[3][htbp]%
+  {% begin @towcenter@float
     % Should this float be full-width or just text-width?
     \ifthenelse{\equal{#3}{star}}%
-      {\gsetboolean{@tufte@float@star}{true}}%
-      {\gsetboolean{@tufte@float@star}{false}}%
+      {\gsetboolean{@towcenter@float@star}{true}}%
+      {\gsetboolean{@towcenter@float@star}{false}}%
     % Check page side (recto/verso) and store detected value -- can be overriden in environment contents
-    \@tufte@checkoddpage%
-    \ifthenelse{\boolean{@tufte@odd@page}}%
-      {\gsetboolean{@tufte@float@recto}{true}\@tufte@float@debug{Detected page: [recto/odd]}}%
-      {\gsetboolean{@tufte@float@recto}{false}\@tufte@float@debug{Detected page: [verso/even]}}%
+    \@towcenter@checkoddpage%
+    \ifthenelse{\boolean{@towcenter@odd@page}}%
+      {\gsetboolean{@towcenter@float@recto}{true}\@towcenter@float@debug{Detected page: [recto/odd]}}%
+      {\gsetboolean{@towcenter@float@recto}{false}\@towcenter@float@debug{Detected page: [verso/even]}}%
     % If the float placement specifier is 'b' and only 'b', then bottom-align the mini-pages, otherwise top-align them.
-    \renewcommand{\@tufte@fps}{#1}%
-    \@tufte@float@debug{Allowed positions: [#1]}%
+    \renewcommand{\@towcenter@fps}{#1}%
+    \@towcenter@float@debug{Allowed positions: [#1]}%
     \ifthenelse{\equal{#1}{b}\OR\equal{#1}{B}}%
-      {\renewcommand{\floatalignment}{b}\@tufte@float@debug{Presumed position: [bottom]}}%
-      {\renewcommand{\floatalignment}{t}\@tufte@float@debug{Presumed position: [top]}}%
+      {\renewcommand{\floatalignment}{b}\@towcenter@float@debug{Presumed position: [bottom]}}%
+      {\renewcommand{\floatalignment}{t}\@towcenter@float@debug{Presumed position: [top]}}%
     % Capture the contents of the \caption and \label commands to use later
-    \global\let\@tufte@orig@caption\caption%
-    \global\let\@tufte@orig@label\label%
-    \renewcommand{\caption}{\optparams{\@tufte@caption}{[][0pt]}}%
-    \renewcommand{\label}[1]{\@tufte@label{##1}}%
+    \global\let\@towcenter@orig@caption\caption%
+    \global\let\@towcenter@orig@label\label%
+    \renewcommand{\caption}{\optparams{\@towcenter@caption}{[][0pt]}}%
+    \renewcommand{\label}[1]{\@towcenter@label{##1}}%
     % Handle subfigure package compatibility
-    \ifthenelse{\boolean{@tufte@packages@subfigure}}{%
+    \ifthenelse{\boolean{@towcenter@packages@subfigure}}{%
       % don't move the label while inside a \subfigure or \subtable command
-      \global\let\label\@tufte@orig@label%
+      \global\let\label\@towcenter@orig@label%
     }{}% subfigure package is not loaded
-    \@tufte@orig@float{#2}[#1]%
-    \ifthenelse{\boolean{@tufte@float@star}}%
-      {\setlength{\@tufte@float@contents@width}{\@tufte@fullwidth}}%
-      {\setlength{\@tufte@float@contents@width}{\textwidth}}%
-    \begin{lrbox}{\@tufte@figure@box}%
-      \begin{minipage}[\floatalignment]{\@tufte@float@contents@width}\hbox{}%
-  }{% end @tufte@float
+    \@towcenter@orig@float{#2}[#1]%
+    \ifthenelse{\boolean{@towcenter@float@star}}%
+      {\setlength{\@towcenter@float@contents@width}{\@towcenter@fullwidth}}%
+      {\setlength{\@towcenter@float@contents@width}{\textwidth}}%
+    \begin{lrbox}{\@towcenter@figure@box}%
+      \begin{minipage}[\floatalignment]{\@towcenter@float@contents@width}\hbox{}%
+  }{% end @towcenter@float
       \par\hbox{}\vspace{-\baselineskip}\ifthenelse{\prevdepth>0}{\vspace{-\prevdepth}}{}% align baselines of boxes
       \end{minipage}%
     \end{lrbox}%
     % build the caption box
-    \begin{lrbox}{\@tufte@caption@box}%
+    \begin{lrbox}{\@towcenter@caption@box}%
       \begin{minipage}[\floatalignment]{\marginparwidth}\hbox{}%
-        \ifthenelse{\NOT\equal{\@tufte@stored@caption}{}}{\@tufte@orig@caption[\@tufte@stored@shortcaption]{\@tufte@stored@caption}}{}%
-        \ifthenelse{\NOT\equal{\@tufte@stored@label}{}}{\@tufte@orig@label{\@tufte@stored@label}}{}%
+        \ifthenelse{\NOT\equal{\@towcenter@stored@caption}{}}{\@towcenter@orig@caption[\@towcenter@stored@shortcaption]{\@towcenter@stored@caption}}{}%
+        \ifthenelse{\NOT\equal{\@towcenter@stored@label}{}}{\@towcenter@orig@label{\@towcenter@stored@label}}{}%
         \par\vspace{-\prevdepth}%% TODO: DOUBLE-CHECK FOR SAFETY
       \end{minipage}%
     \end{lrbox}%
     % now typeset the stored boxes
     \begin{fullwidth}%
       \begin{minipage}[\floatalignment]{\linewidth}%
-        \ifthenelse{\boolean{@tufte@float@star}}%
-          {\@tufte@float@fullwidth[\@tufte@caption@vertical@offset]{\@tufte@figure@box}{\@tufte@caption@box}}%
-          {\@tufte@float@textwidth[\@tufte@caption@vertical@offset]{\@tufte@figure@box}{\@tufte@caption@box}}%
+        \ifthenelse{\boolean{@towcenter@float@star}}%
+          {\@towcenter@float@fullwidth[\@towcenter@caption@vertical@offset]{\@towcenter@figure@box}{\@towcenter@caption@box}}%
+          {\@towcenter@float@textwidth[\@towcenter@caption@vertical@offset]{\@towcenter@figure@box}{\@towcenter@caption@box}}%
       \end{minipage}%
     \end{fullwidth}%
-    \@tufte@orig@endfloat% end original LaTeX float environment
+    \@towcenter@orig@endfloat% end original LaTeX float environment
     % output debug info
-    \ifthenelse{\boolean{@tufte@debug}}{%
-      \typeout{^^J^^J----------- Tufte-LaTeX float information ----------}%
-      \ifthenelse{\equal{\@tufte@stored@label}{}}%
+    \ifthenelse{\boolean{@towcenter@debug}}{%
+      \typeout{^^J^^J----------- towcenter-LaTeX float information ----------}%
+      \ifthenelse{\equal{\@towcenter@stored@label}{}}%
         {\typeout{Warning: Float unlabeled!}}%
-        {\typeout{Float label: [\@tufte@stored@label]}}%
+        {\typeout{Float label: [\@towcenter@stored@label]}}%
       \typeout{Page number: [\thepage]}%
       \def\MessageBreak{^^J}%
-      \typeout{\@tufte@float@debug@info}%
-      \ifthenelse{\boolean{@tufte@symmetric}}%
+      \typeout{\@towcenter@float@debug@info}%
+      \ifthenelse{\boolean{@towcenter@symmetric}}%
         {\typeout{Symmetric: [true]}}%
         {\typeout{Symmetric: [false]}}%
       \typeout{----------------------------------------------------^^J^^J}%
     }{}%
     % reset commands and temp boxes and captions
-    \gdef\@tufte@float@debug@info{}%
-    \let\caption\@tufte@orig@caption%
-    \let\label\@tufte@orig@label%
-    \begin{lrbox}{\@tufte@figure@box}\hbox{}\end{lrbox}%
-    \begin{lrbox}{\@tufte@caption@box}\hbox{}\end{lrbox}%
-    \gdef\@tufte@stored@shortcaption{}%
-    \gdef\@tufte@stored@caption{}%
-    \gdef\@tufte@stored@label{}%
-    \gsetlength{\@tufte@caption@vertical@offset}{0pt}% reset caption offset
+    \gdef\@towcenter@float@debug@info{}%
+    \let\caption\@towcenter@orig@caption%
+    \let\label\@towcenter@orig@label%
+    \begin{lrbox}{\@towcenter@figure@box}\hbox{}\end{lrbox}%
+    \begin{lrbox}{\@towcenter@caption@box}\hbox{}\end{lrbox}%
+    \gdef\@towcenter@stored@shortcaption{}%
+    \gdef\@towcenter@stored@caption{}%
+    \gdef\@towcenter@stored@label{}%
+    \gsetlength{\@towcenter@caption@vertical@offset}{0pt}% reset caption offset
   }
 
-\newcommand{\@tufte@float@textwidth}[3][0pt]{%
-  \ifthenelse{\NOT\boolean{@tufte@symmetric}\OR\boolean{@tufte@float@recto}}{%
+\newcommand{\@towcenter@float@textwidth}[3][0pt]{%
+  \ifthenelse{\NOT\boolean{@towcenter@symmetric}\OR\boolean{@towcenter@float@recto}}{%
     % asymmetric or page is odd, so caption is on the right
     \hbox{%
       \usebox{#2}%
       \hspace{\marginparsep}%
       \smash{\raisebox{#1}{\usebox{#3}}}%
     }%
-    \@tufte@float@debug{Caption position: [right]}%
+    \@towcenter@float@debug{Caption position: [right]}%
   }{% symmetric pages and page is even, so caption is on the left
     \hbox{%
       \smash{\raisebox{#1}{\usebox{#3}}}%
       \hspace{\marginparsep}%
       \usebox{#2}%
     }%
-    \@tufte@float@debug{Caption position: [left]}%
+    \@towcenter@float@debug{Caption position: [left]}%
   }%
 }
 
-\newcommand{\@tufte@float@fullwidth}[3][0pt]{%
+\newcommand{\@towcenter@float@fullwidth}[3][0pt]{%
   \ifthenelse{\equal{\floatalignment}{b}}%
     {% place caption above figure
-      \ifthenelse{\NOT\boolean{@tufte@symmetric}\OR\boolean{@tufte@float@recto}}%
-        {\hfill\smash{\raisebox{#1}{\usebox{#3}}}\par\usebox{#2}\@tufte@float@debug{Caption position: [above right]}}% caption on the right
-        {\smash{\raisebox{#1}{\usebox{#3}}}\hfill\par\usebox{#2}\@tufte@float@debug{Caption position: [above left]}}% caption on the left
+      \ifthenelse{\NOT\boolean{@towcenter@symmetric}\OR\boolean{@towcenter@float@recto}}%
+        {\hfill\smash{\raisebox{#1}{\usebox{#3}}}\par\usebox{#2}\@towcenter@float@debug{Caption position: [above right]}}% caption on the right
+        {\smash{\raisebox{#1}{\usebox{#3}}}\hfill\par\usebox{#2}\@towcenter@float@debug{Caption position: [above left]}}% caption on the left
     }{% place caption below figure
-      \ifthenelse{\NOT\boolean{@tufte@symmetric}\OR\boolean{@tufte@float@recto}}%
-        {\usebox{#2}\par\hfill\smash{\raisebox{#1}{\usebox{#3}}}\@tufte@float@debug{Caption position: [below right]}}% caption on the right
-        {\usebox{#2}\par\smash{\raisebox{#1}{\usebox{#3}}}\hfill\@tufte@float@debug{Caption position: [below left]}}% caption on the left
+      \ifthenelse{\NOT\boolean{@towcenter@symmetric}\OR\boolean{@towcenter@float@recto}}%
+        {\usebox{#2}\par\hfill\smash{\raisebox{#1}{\usebox{#3}}}\@towcenter@float@debug{Caption position: [below right]}}% caption on the right
+        {\usebox{#2}\par\smash{\raisebox{#1}{\usebox{#3}}}\hfill\@towcenter@float@debug{Caption position: [below left]}}% caption on the left
     }%
 }
 
@@ -1128,44 +1128,44 @@
 % Redefine the figure environment to place the captions in the margin space
 
 \renewenvironment{figure}[1][htbp]%
-  {\ifvmode\else\unskip\fi\begin{@tufte@float}[#1]{figure}{}}
-  {\end{@tufte@float}}
+  {\ifvmode\else\unskip\fi\begin{@towcenter@float}[#1]{figure}{}}
+  {\end{@towcenter@float}}
 
 
 %%
 % Redefine the table environment to place the captions in the margin space
 
 \renewenvironment{table}[1][htbp]
-  {\ifvmode\else\unskip\fi\begin{@tufte@float}[#1]{table}{}}
-  {\end{@tufte@float}}
+  {\ifvmode\else\unskip\fi\begin{@towcenter@float}[#1]{table}{}}
+  {\end{@towcenter@float}}
 
 
 %%
 % Full-width figure
 
 \renewenvironment{figure*}[1][htbp]%
-  {\ifvmode\else\unskip\fi\begin{@tufte@float}[#1]{figure}{star}}
-  {\end{@tufte@float}}
+  {\ifvmode\else\unskip\fi\begin{@towcenter@float}[#1]{figure}{star}}
+  {\end{@towcenter@float}}
 
 
 %%
 % Full-width table
 
 \renewenvironment{table*}[1][htbp]%
-  {\ifvmode\else\unskip\fi\begin{@tufte@float}[#1]{table}{star}}
-  {\end{@tufte@float}}
+  {\ifvmode\else\unskip\fi\begin{@towcenter@float}[#1]{table}{star}}
+  {\end{@towcenter@float}}
 
 
 %%
 % Full-page-width area
 
 \newenvironment{fullwidth}
-  {\ifthenelse{\boolean{@tufte@symmetric}}%
-     {\ifthenelse{\boolean{@tufte@changepage}}{\begin{adjustwidth*}{}{-\@tufte@overhang}}{\begin{adjustwidth}[]{}{-\@tufte@overhang}}}%
-     {\begin{adjustwidth}{}{-\@tufte@overhang}}%
+  {\ifthenelse{\boolean{@towcenter@symmetric}}%
+     {\ifthenelse{\boolean{@towcenter@changepage}}{\begin{adjustwidth*}{}{-\@towcenter@overhang}}{\begin{adjustwidth}[]{}{-\@towcenter@overhang}}}%
+     {\begin{adjustwidth}{}{-\@towcenter@overhang}}%
   }%
-  {\ifthenelse{\boolean{@tufte@symmetric}}%
-    {\ifthenelse{\boolean{@tufte@changepage}}{\end{adjustwidth*}}{\end{adjustwidth}}}%
+  {\ifthenelse{\boolean{@towcenter@symmetric}}%
+    {\ifthenelse{\boolean{@towcenter@changepage}}{\end{adjustwidth*}}{\end{adjustwidth}}}%
     {\end{adjustwidth}}%
   }
 
@@ -1181,7 +1181,7 @@
     \if@minipage%
       \@setminipage%
     \fi%
-    \@tufte@caption@font\@tufte@caption@justification%
+    \@towcenter@caption@font\@towcenter@caption@justification%
     \noindent\csname fnum@#1\endcsname: \ignorespaces#3\par%
     %\@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
   \endgroup}
@@ -1191,7 +1191,7 @@
 % we should load the Palatino, Helvetica, and Bera Mono fonts (if they are
 % installed.)
 
-\ifthenelse{\boolean{@tufte@loadfonts}\AND\NOT\boolean{@tufte@xetex}\AND\NOT\boolean{@tufte@luatex}}{%
+\ifthenelse{\boolean{@towcenter@loadfonts}\AND\NOT\boolean{@towcenter@xetex}\AND\NOT\boolean{@towcenter@luatex}}{%
   \IfFileExists{mathpazo.sty}{\RequirePackage[osf,sc]{mathpazo}}{}
   \IfFileExists{helvet.sty}{\RequirePackage[scaled=0.90]{helvet}}{}
   \IfFileExists{beramono.sty}{\RequirePackage[scaled=0.85]{beramono}}{}
@@ -1203,21 +1203,21 @@
 %%
 % Turns newlines into spaces.  Based on code from the `titlesec' package.
 
-\DeclareRobustCommand{\@tufte@newlinetospace}{%
-  \@ifstar{\@tufte@newlinetospace@i}{\@tufte@newlinetospace@i}%
+\DeclareRobustCommand{\@towcenter@newlinetospace}{%
+  \@ifstar{\@towcenter@newlinetospace@i}{\@towcenter@newlinetospace@i}%
 }
 
-\def\@tufte@newlinetospace@i{%
+\def\@towcenter@newlinetospace@i{%
   \ifdim\lastskip>\z@\else\space\fi
   \ignorespaces%
 }
 
 \DeclareRobustCommand{\newlinetospace}[1]{%
-  \let\@tufte@orig@cr\\% save the original meaning of \\
-  \def\\{\@tufte@newlinetospace}% turn \\ and \\* into \space
+  \let\@towcenter@orig@cr\\% save the original meaning of \\
+  \def\\{\@towcenter@newlinetospace}% turn \\ and \\* into \space
   \let\newline\\% turn \newline into \space
   #1%
-  \let\\\@tufte@orig@cr% revert to original meaning of \\
+  \let\\\@towcenter@orig@cr% revert to original meaning of \\
 }
 
 
@@ -1232,9 +1232,9 @@
 % Set the header/footer width to be the body text block plus the margin
 % note area.
 \AtBeginDocument{%
-  \ifthenelse{\boolean{@tufte@symmetric}}
-    {\fancyhfoffset[LE,RO]{\@tufte@overhang}}
-    {\fancyhfoffset[RE,RO]{\@tufte@overhang}}
+  \ifthenelse{\boolean{@towcenter@symmetric}}
+    {\fancyhfoffset[LE,RO]{\@towcenter@overhang}}
+    {\fancyhfoffset[RE,RO]{\@towcenter@overhang}}
 }
 
 % The running heads/feet don't have rules
@@ -1243,20 +1243,20 @@
 
 % The 'fancy' page style is the default style for all pages.
 \fancyhf{} % clear header and footer fields
-\ifthenelse{\boolean{@tufte@twoside}}
+\ifthenelse{\boolean{@towcenter@twoside}}
   {\fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\plainauthor}}}%
     \fancyhead[RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
   {\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
 
 
 % The `plain' page style is used on chapter opening pages.
-% In Tufte's /Beautiful Evidence/ he never puts page numbers at the
+% In towcenter's /Beautiful Evidence/ he never puts page numbers at the
 % bottom of pages -- the folios are unexpressed.
 \fancypagestyle{plain}{
   \fancyhf{} % clear header and footer fields
   % Uncomment the following five lines of code if you want the opening page
   % of the chapter to express the folio in the lower outside corner.
-  %\ifthenelse{\boolean{@tufte@twoside}}
+  %\ifthenelse{\boolean{@towcenter@twoside}}
   %  {\fancyfoot[LE,RO]{\thepage}}
   %  {\fancyfoot[RE,RO]{\thepage}}
 }
@@ -1271,7 +1271,7 @@
 %%
 % Set raggedright and paragraph indentation for document
 
-\AtBeginDocument{\@tufte@justification}
+\AtBeginDocument{\@towcenter@justification}
 
 
 %%
@@ -1287,39 +1287,39 @@
   \typeout{\space\space#1: #2}
 }
 
-\newcommand{\PrintTufteSettings}{%
-  \typeout{-------------------- Tufte-LaTeX settings ----------}
-  \typeout{Class: \@tufte@pkgname}
+\newcommand{\PrinttowcenterSettings}{%
+  \typeout{-------------------- towcenter-LaTeX settings ----------}
+  \typeout{Class: \@towcenter@pkgname}
   \typeout{}
   \typeout{Class options:}
-  \typeoutbool{a4paper}{@tufte@afourpaper}
-  \typeoutbool{b5paper}{@tufte@bfivepaper}
-  \typeoutbool{load fonts}{@tufte@loadfonts}
-  \typeoutbool{fully-justified}{@tufte@justified}
-  \typeoutbool{letterspacing}{@tufte@letterspace}
-  \typeoutbool{sans-serif sidenotes}{@tufte@sfsidenotes}
-  \typeoutbool{symmetric margins}{@tufte@symmetric}
-  \typeoutbool{titlepage}{@tufte@titlepage}
-  \typeoutbool{twoside}{@tufte@twoside}
-  \typeoutbool{debug}{@tufte@debug}
+  \typeoutbool{a4paper}{@towcenter@afourpaper}
+  \typeoutbool{b5paper}{@towcenter@bfivepaper}
+  \typeoutbool{load fonts}{@towcenter@loadfonts}
+  \typeoutbool{fully-justified}{@towcenter@justified}
+  \typeoutbool{letterspacing}{@towcenter@letterspace}
+  \typeoutbool{sans-serif sidenotes}{@towcenter@sfsidenotes}
+  \typeoutbool{symmetric margins}{@towcenter@symmetric}
+  \typeoutbool{titlepage}{@towcenter@titlepage}
+  \typeoutbool{twoside}{@towcenter@twoside}
+  \typeoutbool{debug}{@towcenter@debug}
   \typeout{}
   \typeout{Internal variables:}
   \typeoutbool{[twoside]}{@twoside}
-  \typeoutbool{pdflatex}{@tufte@pdf}
-  \typeoutbool{xelatex}{@tufte@xetex}
+  \typeoutbool{pdflatex}{@towcenter@pdf}
+  \typeoutbool{xelatex}{@towcenter@xetex}
   \typeout{----------------------------------------------------}
 }
 
 %%
 % Amount of space to skip before \newthought or after title block
 
-\newskip\tufteskipamount
-\tufteskipamount=1.0\baselineskip plus 0.5ex minus 0.2ex
+\newskip\towcenterskipamount
+\towcenterskipamount=1.0\baselineskip plus 0.5ex minus 0.2ex
 
-\newcommand{\tuftebreak}{\par\ifdim\lastskip<\tufteskipamount
-  \removelastskip\penalty-100\tufteskip\fi}
+\newcommand{\towcenterbreak}{\par\ifdim\lastskip<\towcenterskipamount
+  \removelastskip\penalty-100\towcenterskip\fi}
 
-\newcommand{\tufteskip}{\vspace\tufteskipamount}
+\newcommand{\towcenterskip}{\vspace\towcenterskipamount}
 
 
 %%
@@ -1353,7 +1353,7 @@
     \let\@@title\@empty
     \let\@@author\@empty
     \let\@@date\@empty
-    \ifthenelse{\boolean{@tufte@sfsidenotes}}{%
+    \ifthenelse{\boolean{@towcenter@sfsidenotes}}{%
       \gdef\@@title{\sffamily\LARGE\allcaps{\@title}\par}%
       \gdef\@@author{\sffamily\Large\allcaps{\@author}\par}%
       \gdef\@@date{\sffamily\Large\allcaps{\@date}\par}%
@@ -1367,16 +1367,16 @@
     \@@date
   \endgroup
   \thispagestyle{plain}% suppress the running head
-  \tuftebreak% add some space before the text begins
+  \towcenterbreak% add some space before the text begins
   \@afterindentfalse\@afterheading% suppress indentation of the next paragraph
 }
 
 
 %%
-% Title page (if the `titlepage' option was passed to the tufte-handout
+% Title page (if the `titlepage' option was passed to the towcenter-handout
 % class.)
 
-\ifthenelse{\boolean{@tufte@titlepage}}
+\ifthenelse{\boolean{@towcenter@titlepage}}
   {\renewcommand{\maketitle}{\maketitlepage}}
   {}
 
@@ -1399,11 +1399,11 @@
 
 \titleformat{\chapter}%
   [display]% shape
-  {\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
+  {\relax\ifthenelse{\NOT\boolean{@towcenter@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
   {\itshape\huge\thechapter}% label
   {0pt}% horizontal separation between label and title body
   {\huge\rmfamily\itshape}% before the title body
-  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{fullwidth}}{}]% after the title body
+  [\ifthenelse{\NOT\boolean{@towcenter@symmetric}}{\end{fullwidth}}{}]% after the title body
 
 \titleformat{\section}%
   [hang]% shape
@@ -1436,29 +1436,29 @@
 % Subsubsection and following section headings shouldn't be used.
 % See Bringhurst's _The Elements of Typography_, section 4.2.2.
 \renewcommand\subsubsection{%
-  \@tufte@error{\string\subsubsection is undefined by this class.
+  \@towcenter@error{\string\subsubsection is undefined by this class.
     See Robert Bringhurst's _The Elements of 
     Typographic Style_, section 4.2.2.
     \string\subsubsection was used}
     {From Bringhurst's _The Elements of Typographic Style_, section 4.2.2: Use as 
     many levels of headings as you need, no more and no fewer.  Also see the many 
-    related threads on Ask E.T. at http://www.edwardtufte.com/.}
+    related threads on Ask E.T. at http://www.edwardtowcenter.com/.}
 }
 
 \renewcommand\subparagraph{%
-  \@tufte@error{\string\subparagraph is undefined by this class.%
+  \@towcenter@error{\string\subparagraph is undefined by this class.%
     See Robert Bringhurst's _The Elements of 
     Typographic Style_, section 4.2.2.
     \string\subparagraph was used}
     {From Bringhurst's _The Elements of Typographic Style_, section 4.2.2: Use as 
     many levels of headings as you need, no more and no fewer.  Also see the many 
-    related threads on Ask E.T. at http://www.edwardtufte.com/.}
+    related threads on Ask E.T. at http://www.edwardtowcenter.com/.}
 }
 
 
 % Formatting for main TOC (printed in front matter)
 % {section} [left] {above} {before w/label} {before w/o label} {filler + page} [after]
-\ifthenelse{\boolean{@tufte@toc}}{%
+\ifthenelse{\boolean{@towcenter@toc}}{%
   \titlecontents{part}% FIXME
     [0em] % distance from left margin
     {\vspace{1.5\baselineskip}\begin{fullwidth}\LARGE\rmfamily\itshape} % above (global formatting of entry)
@@ -1500,7 +1500,7 @@
 % Format lists of figures/tables
 
 \renewcommand\listoffigures{%
-  \ifthenelse{\equal{\@tufte@class}{book}}%
+  \ifthenelse{\equal{\@towcenter@class}{book}}%
     {\chapter*{\listfigurename}}%
     {\section*{\listfigurename}}%
 %  \begin{fullwidth}%
@@ -1509,7 +1509,7 @@
 }
 
 \renewcommand\listoftables{%
-  \ifthenelse{\equal{\@tufte@class}{book}}%
+  \ifthenelse{\equal{\@towcenter@class}{book}}%
     {\chapter*{\listtablename}}%
     {\section*{\listtablename}}%
 %  \begin{fullwidth}%
@@ -1517,7 +1517,7 @@
 %  \end{fullwidth}%
 }
 
-\newcommand{\@tufte@lof@line}[2]{%
+\newcommand{\@towcenter@lof@line}[2]{%
   % #1 is the figure/table number and its caption text
   % #2 is the page number on which the figure/table appears
   \leftskip 0.0em
@@ -1534,7 +1534,7 @@
   \par%
 }
 
-\renewcommand*\l@figure{\@tufte@lof@line}
+\renewcommand*\l@figure{\@towcenter@lof@line}
 \let\l@table\l@figure
 
 
@@ -1554,7 +1554,7 @@
 % Redefine \bibsection to not mark the running heads.
 % (Code modified from natbib.sty.)
 
-\ifthenelse{\boolean{@tufte@loadnatbib}}{%
+\ifthenelse{\boolean{@towcenter@loadnatbib}}{%
   \@ifundefined{chapter}{%
     \renewcommand\bibsection{\section*{\refname}}%
   }{%
@@ -1567,11 +1567,11 @@
 }
 
 %%
-% An index environment to mimic Tufte's indexes
+% An index environment to mimic towcenter's indexes
 
 \RequirePackage{multicol}
 \renewenvironment{theindex}{%
-  \ifthenelse{\equal{\@tufte@class}{book}}%
+  \ifthenelse{\equal{\@towcenter@class}{book}}%
     {\chapter{\indexname}}%
     {\section*{\indexname}}%
   \begin{fullwidth}%
@@ -1596,7 +1596,7 @@
 
 \def\morefloats{% provides a total of 52 floats
   \ifthenelse{\isundefined{\bx@S}}{%
-    \@tufte@debug@info@noline{Adding 34 more float slots.}
+    \@towcenter@debug@info@noline{Adding 34 more float slots.}
     \newinsert\bx@S
     \newinsert\bx@T
     \newinsert\bx@U
@@ -1645,7 +1645,7 @@
                     \@elt\bx@w\@elt\bx@x\@elt\bx@y\@elt\bx@z}%
   }{% we've already added another 34 floats, so we'll add 26 more, but that's it!
     \ifthenelse{\isundefined{\bx@AA}}{%
-      \@tufte@debug@info@noline{Adding 26 more float slots.}
+      \@towcenter@debug@info@noline{Adding 26 more float slots.}
       \newinsert\bx@AA
       \newinsert\bx@BB
       \newinsert\bx@CC
@@ -1691,7 +1691,7 @@
                       \@elt\bx@SS\@elt\bx@TT\@elt\bx@UU\@elt\bx@VV
                       \@elt\bx@WW\@elt\bx@XX\@elt\bx@YY\@elt\bx@ZZ}%
     }{%
-      \@tufte@error{You may only call \string\morefloats\space twice. See the Tufte-LaTeX documentation for other workarounds}
+      \@towcenter@error{You may only call \string\morefloats\space twice. See the towcenter-LaTeX documentation for other workarounds}
         {There are already 78 float slots allocated. Try using \string\FloatBarrier\space or \string\clearpage\space to place some floats before creating more.}
     }%
   }%
@@ -1701,12 +1701,12 @@
 %%
 % Detect if the subfigure package has been loaded
 
-\newboolean{@tufte@packages@subfigure}
-\setboolean{@tufte@packages@subfigure}{false}
+\newboolean{@towcenter@packages@subfigure}
+\setboolean{@towcenter@packages@subfigure}{false}
 \AtBeginDocument{%
   \@ifpackageloaded{subfigure}
-    {\gsetboolean{@tufte@packages@subfigure}{true}}
-    {\gsetboolean{@tufte@packages@subfigure}{false}}%
+    {\gsetboolean{@towcenter@packages@subfigure}{true}}
+    {\gsetboolean{@towcenter@packages@subfigure}{false}}%
 }
 
 
@@ -1716,42 +1716,42 @@
 \AtBeginDocument{%
   \@ifpackageloaded{float}{%
     % Save the redefined float environment (instead of the LaTeX float environment)
-    \let\@tufte@orig@float\@float
-    \let\@tufte@orig@endfloat\end@float
+    \let\@towcenter@orig@float\@float
+    \let\@towcenter@orig@endfloat\end@float
 
     % Define Tuftian float styles (with the caption in the margin)
-    \newcommand{\floatc@tufteplain}[2]{%
-      \begin{lrbox}{\@tufte@caption@box}%
+    \newcommand{\floatc@towcenterplain}[2]{%
+      \begin{lrbox}{\@towcenter@caption@box}%
         \begin{minipage}[\floatalignment]{\marginparwidth}\hbox{}%
-          \@tufte@caption@font{\@fs@cfont #1:} #2\par%
+          \@towcenter@caption@font{\@fs@cfont #1:} #2\par%
         \end{minipage}%
       \end{lrbox}%
-      \smash{\hspace{\@tufte@caption@fill}\usebox{\@tufte@caption@box}}%
+      \smash{\hspace{\@towcenter@caption@fill}\usebox{\@towcenter@caption@box}}%
     }
-    \newcommand{\fs@tufteplain}{%
-      \def\@fs@cfont{\@tufte@caption@font}%
-      \let\@fs@capt\floatc@tufteplain%
+    \newcommand{\fs@towcenterplain}{%
+      \def\@fs@cfont{\@towcenter@caption@font}%
+      \let\@fs@capt\floatc@towcenterplain%
       \def\@fs@pre{}%
       \def\@fs@post{}%
       \def\@fs@mid{}%
       \let\@fs@iftopcapt\iftrue%
     }
-    \let\fs@tufteplaintop=\fs@tufteplain
-    \let\floatc@tufteplaintop=\floatc@tufteplain
-    \newcommand\floatc@tufteruled[2]{%
+    \let\fs@towcenterplaintop=\fs@towcenterplain
+    \let\floatc@towcenterplaintop=\floatc@towcenterplain
+    \newcommand\floatc@towcenterruled[2]{%
       {\@fs@cfont #1} #2\par%
     }
-    \newcommand\fs@tufteruled{%
-      \def\@fs@cfont{\@tufte@caption@font}%
-      \let\@fs@capt\floatc@tufteplain%
+    \newcommand\fs@towcenterruled{%
+      \def\@fs@cfont{\@towcenter@caption@font}%
+      \let\@fs@capt\floatc@towcenterplain%
       \def\@fs@pre{\hrule height.8pt depth0pt width\textwidth \kern2pt}%
       \def\@fs@post{\kern2pt\hrule width\textwidth\relax}%
       \def\@fs@mid{}%
       \let\@fs@iftopcapt\iftrue%
     }
-    \newcommand\fs@tufteboxed{%
+    \newcommand\fs@towcenterboxed{%
       \def\@fs@cfont{}%
-      \let\@fs@capt\floatc@tufteplain%
+      \let\@fs@capt\floatc@towcenterplain%
       \def\@fs@pre{%
         \setbox\@currbox\vbox{\hbadness10000
         \moveleft3.4pt\vbox{\advance\hsize by6.8pt
@@ -1771,8 +1771,8 @@
   \@ifpackageloaded{algorithm}{%
     % Set the float style to the Tuftian version
     \ifthenelse{\equal{\ALG@floatstyle}{plain}\OR\equal{\ALG@floatstyle}{ruled}\OR\equal{\ALG@floatstyle}{boxed}}{%
-      \@tufte@info@noline{Switching algorithm float style from \ALG@floatstyle\space to tufte\ALG@floatstyle}%
-      \floatstyle{tufte\ALG@floatstyle}%
+      \@towcenter@info@noline{Switching algorithm float style from \ALG@floatstyle\space to towcenter\ALG@floatstyle}%
+      \floatstyle{towcenter\ALG@floatstyle}%
       \restylefloat{algorithm}%
     }{}%
   }{%
@@ -1790,20 +1790,20 @@
 
 
 %%
-% If debugging is enabled, print the Tufte-LaTeX options and the list of
+% If debugging is enabled, print the towcenter-LaTeX options and the list of
 % files.
 
-\ifthenelse{\boolean{@tufte@debug}}
-  {\PrintTufteSettings\listfiles}
+\ifthenelse{\boolean{@towcenter@debug}}
+  {\PrinttowcenterSettings\listfiles}
   {}
 
 
 %%
-% If there is a `tufte-common-local.tex' file, load it up.
+% If there is a `towcenter-common-local.tex' file, load it up.
 
-\IfFileExists{tufte-common-local.tex}
-  {\input{tufte-common-local.tex}%
-   \@tufte@info@noline{Loading tufte-common-local.tex}}
+\IfFileExists{towcenter-common-local.tex}
+  {\input{towcenter-common-local.tex}%
+   \@towcenter@info@noline{Loading towcenter-common-local.tex}}
   {}
 
 

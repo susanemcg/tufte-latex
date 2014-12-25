@@ -1,15 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 
-\ProvidesClass{tufte-book}[2010/03/28 v3.5.1 Tufte-book class]
+\ProvidesClass{towcenter-book}[2010/03/28 v3.5.1 Tufte-book class]
 
 %%
-% Declare we're tufte-book
-\newcommand{\@tufte@class}{book}% the base LaTeX class (defaults to the article/handout style)
-\newcommand{\@tufte@pkgname}{tufte-book}% the name of the package (defaults to tufte-handout)
+% Declare we're towcenter-book
+\newcommand{\@towcenter@class}{book}% the base LaTeX class (defaults to the article/handout style)
+\newcommand{\@towcenter@pkgname}{towcenter-book}% the name of the package
 
 %%
 % Load the common style elements
-\input{tufte-common.def}
+\input{towcenter-common.def}
 
 
 %%
@@ -26,7 +26,7 @@
   \pagenumbering{arabic}%
   %\pagestyle{plain}%
   \fancyhf{}%
-  \ifthenelse{\boolean{@tufte@twoside}}%
+  \ifthenelse{\boolean{@towcenter@twoside}}%
     {\fancyhead[LE,RO]{\thepage}}%
     {\fancyhead[RE,RO]{\thepage}}%
 }
@@ -39,7 +39,7 @@
   \cleardoublepage%
   \@mainmattertrue%
   \fancyhf{}%
-  \ifthenelse{\boolean{@tufte@twoside}}%
+  \ifthenelse{\boolean{@towcenter@twoside}}%
     {% two-side
       \renewcommand{\chaptermark}[1]{\markboth{##1}{}}%
       \fancyhead[LE]{\thepage\quad\footnotesize\allcaps{\newlinetospace{\textsf{Columbia Journalism School \textbar{} \textbf{Tow Center} for Digital Journalism}}}}% book title
@@ -68,11 +68,11 @@
 \setcounter{tocdepth}{1}
 
 %%
-% If there is a `tufte-book-local.sty' file, load it.
+% If there is a `towcenter-book-local.sty' file, load it.
 
-\IfFileExists{tufte-book-local.tex}{%
-  \@tufte@info@noline{Loading tufte-book-local.tex}%
-  \input{tufte-book-local}%
+\IfFileExists{towcenter-book-local.tex}{%
+  \@towcenter@info@noline{Loading towcenter-book-local.tex}%
+  \input{towcenter-book-local}%
 }{}
 
 %%

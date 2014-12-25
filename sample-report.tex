@@ -1,4 +1,4 @@
-\documentclass[symmetric, notoc]{tufte-book}
+\documentclass[symmetric, notoc]{towcenter-book}
 
 \hypersetup{colorlinks}% uncomment this line if you prefer colored hyperlinks (e.g., for onscreen viewing)
 
@@ -11,7 +11,7 @@
 \usepackage{setspace}
 
 %%
-% Adding back marginnote functionality that I've stripped from tufte-common.def
+% Adding back marginnote functionality that I've stripped from tufte-common.def in the process of creating towcenter-common.def
 \usepackage{marginnote}
 \renewcommand{\marginnote}[1]{{\marginpar{\raggedright\footnotesize
 \setstretch{1.025}%
@@ -119,27 +119,27 @@
 \providecommand{\XeLaTeX}{X\lower.5ex\hbox{\kern-0.15em\reflectbox{E}}\kern-0.1em\LaTeX}
 \newcommand{\tXeLaTeX}{\XeLaTeX\index{XeLaTeX@\protect\XeLaTeX}}
 % \index{\texttt{\textbackslash xyz}@\hangleft{\texttt{\textbackslash}}\texttt{xyz}}
-\newcommand{\tuftebs}{\symbol{'134}}% a backslash in tt type in OT1/T1
-\newcommand{\doccmdnoindex}[2][]{\texttt{\tuftebs#2}}% command name -- adds backslash automatically (and doesn't add cmd to the index)
+\newcommand{\towcenterbs}{\symbol{'134}}% a backslash in tt type in OT1/T1
+\newcommand{\doccmdnoindex}[2][]{\texttt{\towcenterbs#2}}% command name -- adds backslash automatically (and doesn't add cmd to the index)
 \newcommand{\doccmddef}[2][]{%
-  \hlred{\texttt{\tuftebs#2}}\label{cmd:#2}%
+  \hlred{\texttt{\towcenterbs#2}}\label{cmd:#2}%
   \ifthenelse{\isempty{#1}}%
     {% add the command to the index
-      \index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2}}% command name
+      \index{#2 command@\protect\hangleft{\texttt{\towcenterbs}}\texttt{#2}}% command name
     }%
     {% add the command and package to the index
-      \index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2} (\texttt{#1} package)}% command name
+      \index{#2 command@\protect\hangleft{\texttt{\towcenterbs}}\texttt{#2} (\texttt{#1} package)}% command name
       \index{#1 package@\texttt{#1} package}\index{packages!#1@\texttt{#1}}% package name
     }%
 }% command name -- adds backslash automatically
 \newcommand{\doccmd}[2][]{%
-  \texttt{\tuftebs#2}%
+  \texttt{\towcenterbs#2}%
   \ifthenelse{\isempty{#1}}%
     {% add the command to the index
-      \index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2}}% command name
+      \index{#2 command@\protect\hangleft{\texttt{\towcenterbs}}\texttt{#2}}% command name
     }%
     {% add the command and package to the index
-      \index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2} (\texttt{#1} package)}% command name
+      \index{#2 command@\protect\hangleft{\texttt{\towcenterbs}}\texttt{#2} (\texttt{#1} package)}% command name
       \index{#1 package@\texttt{#1} package}\index{packages!#1@\texttt{#1}}% package name
     }%
 }% command name -- adds backslash automatically
