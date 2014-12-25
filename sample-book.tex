@@ -19,7 +19,7 @@
 
 %%
 % Book metadata
-\title{Report title here}
+\title{Sample Tow Center printed report}
 \author{Susan E. McGregor - susanemcg}
 \publisher{Tow Center for Digital Journalism}
 
@@ -168,6 +168,8 @@
 % r.1 blank page
 \blankpage
 
+% l.1 blank page
+\blankpage
 
 % r.3 full title page
 %\maketitle
@@ -185,11 +187,12 @@ A Tow/Knight Report}
 \hfill
 \begin{minipage}[t][1\textheight]{70mm}
 \vspace{0pt}
-\Huge\textcolor{darkblue}{\textbf{{\titlefont DIGITAL\\ SECURITY\\
-AND\\
-SOURCE\\ PROTECTION\\
+\Huge\textcolor{darkblue}{\textbf{{\titlefont SAMPLE\\
+TOW CENTER\\
 FOR\\
-JOURNALISTS\\
+DIGITAL\\
+JOURNALISM\\
+REPORT\\
 \textcolor{lightblue}{
 SUSAN\\
 MCGREGOR\\
@@ -201,29 +204,40 @@ MCGREGOR\\
 and the John S. and James L. Knight Foundation}
 \end{minipage}%
 
+\blankpage
 
 % v.4 copyright page
 \newpage
 \null
 \vfill
-\begin{fullwidth}
+
 \textsf{\textbf{Acknowledgements}} 
 \\[1.0cm]
-\noindent\textit{This paper is the product of countless conversations, encounters, recommendations and insights provided to me over the past year by members of the digital security and journalism communities.}\\[0.5cm]
+\noindent\textit{In the 21st century, that news is transmitted in more ways than ever before – in print, on the air and on the Web, with words, images, graphics, sounds and video. But always and in all media, we insist on the highest standards of integrity and ethical behavior when we gather and deliver the news.
+}\\[0.5cm]
+\noindent\textit{That means we abhor inaccuracies, carelessness, bias or distortions.}\\[0.5cm]
 
-\noindent\textit{Though it would be impossible to name everyone whose insight and expertise has informed this work, my deepest thanks go to Franzi Roesner, Carey Shenkman, Nabiha Syed, Seamus Tuohy, Chris Walker and Carol Waters for providing invaluable feedback and direction on early versions of this paper; your expertise and insight was invaluable. Also to Oktavia Jonsdottir, Scott Klein, Quinn Norton, Jeremy Singer-Vine and Jennifer Valentino-DeVries, who shared their ideas and work processes with me. And a very special thanks to Peter G. Neumann, who offered me the long view on digital security and directed me to essential resources and experts on the subject.} \\[0.5cm]
+\noindent\textit{It means we will not knowingly introduce false information into material intended for publication or broadcast; nor will we alter photo or image content. Quotations must be accurate, and precise.}\\[0.5cm]
 
-\noindent\textit{This project would also not have been possible without the financial and intellectual support of my colleagues at Columbia Journalism School, and the Tow Center for Digital Journalism--particularly Emily Bell and Taylor Owen. Likewise, I am very grateful to both OpenITP and TacticalTech--organizations whose generosity in hosting me in the fall of 2013 made possible so many enlightening interactions with the digital security community. Without the openness of these organizations and their associates, this work would not have been possible.} \\[0.5cm]
+\noindent\textit{It means we always strive to identify all the sources of our information, shielding them with anonymity only when they insist upon it and when they provide vital information – not opinion or speculation; when there is no other way to obtain that information; and when we know the source is knowledgeable and reliable.}\\[0.5cm]
 
-\noindent\textit{And finally, many grateful thanks to my talented, enthusiastic, and insightful illustrator and collaborator, Matteo Farinella, for truly making the invisible, visible.} \\[1.0cm]
+\noindent\textit{It means we don't plagiarize.}\\[0.5cm]
+
+\noindent\textit{It means we avoid behavior or activities that create a conflict of interest and compromise our ability to report the news fairly and accurately, uninfluenced by any person or action.}\\[0.5cm]
+
+\noindent\textit{It means we don't misidentify or misrepresent ourselves to get a story. When we seek an interview, we identify ourselves as AP journalists.}\\[0.5cm]
+
+\noindent\textit{It means we don’t pay newsmakers for interviews, to take their photographs or to film or record them.}\\[0.5cm]
+
+\noindent\textit{It means we must be fair. Whenever we portray someone in a negative light, we must make a real effort to obtain a response from that person. When mistakes are made, they must be corrected – fully, quickly and ungrudgingly.}\\[0.5cm]
+
+\noindent\textit{And ultimately, it means it is the responsibility of every one of us to ensure that these standards are upheld. Any time a question is raised about any aspect of our work, it should be taken seriously.}\\[0.5cm]
 
 \noindent \small{Copyright \copyright\ \the\year\ \thanklessauthor}
 
 \noindent \small{This volume produced with the assistance of the \textsf{tufte-\LaTeX{}} class.}
 
-\noindent\textit{First printing, June 2014}
-%\monthyear}
-\end{fullwidth}
+\noindent\textit{\monthyear}
 
 % r.5 contents
 \tableofcontents
@@ -235,7 +249,7 @@ and the John S. and James L. Knight Foundation}
 \begin{doublespace}
 \noindent\fontsize{16}{18}\selectfont\itshape
 \nohyphenation
-This paper is dedicated to all members of the digital security and journalism communities, whose shared commitment to transparency, skepticism towards power, and dedication to informing and empowering individuals everywhere has been an inspiration. I hope that this will be only the first of many collaborations between our equally scrappy, resilient, and adaptive professions. 
+The text in this sample book is taken from the News Values statement of the Associated Press. The full text of this very useful document can be found online here: \href{http://www.ap.org/company/news-values}{http://www.ap.org/company/news-values}. Read it.
 \end{doublespace}
 \vfill
 \vfill
@@ -245,35 +259,57 @@ This paper is dedicated to all members of the digital security and journalism co
 \cleardoublepage
 \chapter*{Introduction}
 
-Add introduction here.
+An asterisk following a new chapter command means that chapter will not appear in the table of contents.
 
 
 %%
 % Start the main matter (normal chapters)
 \mainmatter
 
-\chapter{A chapter title}
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis faucibus libero in tempor. Donec diam eros, elementum ac porta vitae, porttitor sit amet orci. Integer vitae ex at magna posuere volutpat at vitae dui. Aliquam efficitur ante ligula, at facilisis risus gravida ut. Etiam justo ligula, imperdiet in lectus sit amet, ultrices suscipit sapien. Nunc scelerisque semper dignissim. Curabitur eu accumsan erat. Ut nec ultricies ante. Nam nec vestibulum ligula\marginnote{``As far as I know, this is the exact three-month renewal.''}.
+\chapter{Standards \& Practices}
 
-Donec aliquet egestas elit elementum gravida. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras vitae augue ullamcorper, sodales lacus quis, sollicitudin erat. Sed laoreet rhoncus nibh, quis faucibus nibh feugiat vitae. Sed mollis, ante non ultrices imperdiet, metus metus iaculis risus, vitae blandit quam odio eu mauris. Curabitur a fermentum turpis. Aliquam sed odio quis augue posuere efficitur vitae sed augue\cite{Tufte2006}.
+\section{ANONYMOUS SOURCES:}
+Transparency is critical to our credibility with the public and our subscribers. Whenever possible, we pursue information on the record. When a newsmaker insists on background or off-the-record ground rules, we must adhere to a strict set of guidelines, enforced by AP news managers.
 
-In suscipit, sapien vel varius pharetra, arcu turpis varius mi, sed luctus libero felis id lorem. Sed a sapien magna. Maecenas nunc quam, euismod at tincidunt eget, dignissim non ante. Phasellus condimentum dignissim ligula eu egestas. Ut faucibus laoreet pharetra. Nunc feugiat quam in ligula gravida aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis sem nisl, condimentum at dapibus non, sagittis eu velit. Ut porta turpis sem, elementum fringilla justo accumsan eget. Sed fringilla tempus quam a cursus. Fusce faucibus dignissim nunc eu lacinia. 
+Under AP's rules, material from anonymous sources may be used only if:
 
-\section{Teasing out the running heds}
+\begin{enumerate}
+\item The material is information and not opinion or speculation, and is vital to the news report.
+\item The information is not available except under the conditions of anonymity imposed by the source.
+\item The source is reliable, and in a position to have accurate information.
+\end{enumerate}\marginnote{For more on formatting lists in \LaTeX{}, see \href{https://en.wikibooks.org/wiki/LaTeX/List_Structures}{``List Structures''}.\cite{LaTeXLists}}
 
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis faucibus libero in tempor. Donec diam eros, elementum ac porta vitae, porttitor sit amet orci. Integer vitae ex at magna posuere volutpat at vitae dui. Aliquam efficitur ante ligula, at facilisis risus gravida ut. Etiam justo ligula, imperdiet in lectus sit amet, ultrices suscipit sapien. Nunc scelerisque semper dignissim. Curabitur eu accumsan erat. Ut nec ultricies ante. Nam nec vestibulum ligula\marginnote{``As far as I know, this is the exact three-month renewal.''}.
+Reporters who intend to use material from anonymous sources must get approval from their news manager before sending the story to the desk. The manager is responsible for vetting the material and making sure it meets AP guidelines. The manager must know the identity of the source, and is obligated, like the reporter, to keep the source's identity confidential. Only after they are assured that the source material has been vetted should editors allow it to be transmitted.
 
-Donec aliquet egestas elit elementum gravida. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras vitae augue ullamcorper, sodales lacus quis, sollicitudin erat. Sed laoreet rhoncus nibh, quis faucibus nibh feugiat vitae. Sed mollis, ante non ultrices imperdiet, metus metus iaculis risus, vitae blandit quam odio eu mauris. Curabitur a fermentum turpis. Aliquam sed odio quis augue posuere efficitur vitae sed augue\cite{LibelousTweets}.
+Reporters should proceed with interviews on the assumption they are on the record. If the source wants to set conditions, these should be negotiated at the start of the interview. At the end of the interview, the reporter should try once again to move some or all of the information back on the record.
 
-In suscipit, sapien vel varius pharetra, arcu turpis varius mi, sed luctus libero felis id lorem. Sed a sapien magna. Maecenas nunc quam, euismod at tincidunt eget, dignissim non ante. Phasellus condimentum dignissim ligula eu egestas. Ut faucibus laoreet pharetra. Nunc feugiat quam in ligula gravida aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis sem nisl, condimentum at dapibus non, sagittis eu velit. Ut porta turpis sem, elementum fringilla justo accumsan eget. Sed fringilla tempus quam a cursus. Fusce faucibus dignissim nunc eu lacinia. 
+Before agreeing to use anonymous source material, the reporter should ask how the source knows the information is accurate, ensuring that the source has direct knowledge. Reporters may not agree to a source's request that AP not pursue additional comment or information.
 
-\section{Teasing out the running heds}
+The AP routinely seeks and requires more than one source. Stories should be held while attempts are made to reach additional sources for confirmation or elaboration. In rare cases, one source will be sufficient – when material comes from an authoritative figure who provides information so detailed that there is no question of its accuracy.
 
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis faucibus libero in tempor. Donec diam eros, elementum ac porta vitae, porttitor sit amet orci. Integer vitae ex at magna posuere volutpat at vitae dui. Aliquam efficitur ante ligula, at facilisis risus gravida ut. Etiam justo ligula, imperdiet in lectus sit amet, ultrices suscipit sapien. Nunc scelerisque semper dignissim. Curabitur eu accumsan erat. Ut nec ultricies ante. Nam nec vestibulum ligula\marginnote{``As far as I know, this is the exact three-month renewal.''}.
+We must explain in the story why the source requested anonymity. And, when it’s relevant, we must describe the source's motive for disclosing the information. If the story hinges on documents, as opposed to interviews, the reporter must describe how the documents were obtained, at least to the extent possible.
 
-Donec aliquet egestas elit elementum gravida. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras vitae augue ullamcorper, sodales lacus quis, sollicitudin erat. Sed laoreet rhoncus nibh, quis faucibus nibh feugiat vitae. Sed mollis, ante non ultrices imperdiet, metus metus iaculis risus, vitae blandit quam odio eu mauris. Curabitur a fermentum turpis. Aliquam sed odio quis augue posuere efficitur vitae sed augue\cite{DiffieHellmanExchangeVideo}.
+The story also must provide attribution that establishes the source's credibility; simply quoting ``a source'' is not allowed. We should be as descriptive as possible: ``according to top White House aides'' or ``a senior official in the British Foreign Office.'' The description of a source must never be altered without consulting the reporter.
 
-In suscipit, sapien vel varius pharetra, arcu turpis varius mi, sed luctus libero felis id lorem. Sed a sapien magna. Maecenas nunc quam, euismod at tincidunt eget, dignissim non ante. Phasellus condimentum dignissim ligula eu egestas. Ut faucibus laoreet pharetra. Nunc feugiat quam in ligula gravida aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis sem nisl, condimentum at dapibus non, sagittis eu velit. Ut porta turpis sem, elementum fringilla justo accumsan eget. Sed fringilla tempus quam a cursus. Fusce faucibus dignissim nunc eu lacinia. 
+We must not say that a person declined comment when he or she is already quoted anonymously. And we should not attribute information to anonymous sources when it is obvious or well known. We should just state the information as fact.
+
+Stories that use anonymous sources must carry a reporter's byline. If a reporter other than the bylined staffer contributes anonymous material to a story, that reporter should be given credit as a contributor to the story.
+
+And all complaints and questions about the authenticity or veracity of anonymous material – from inside or outside the AP – must be promptly brought to the news manager's attention.
+
+Not everyone understands “off the record” or “on background” to mean the same things. Before any interview in which any degree of anonymity is expected, there should be a discussion in which the ground rules are set explicitly.
+
+\textbf{These are the AP’s definitions:}
+
+On the record. The information can be used with no caveats, quoting the source by name.
+
+Off the record. The information cannot be used for publication.
+
+Background. The information can be published but only under conditions negotiated with the source. Generally, the sources do not want their names published but will agree to a description of their position. AP reporters should object vigorously when a source wants to brief a group of reporters on background and try to persuade the source to put the briefing on the record. These background briefings have become routine in many venues, especially with government officials.
+
+Deep background. The information can be used but without attribution. The source does not want to be identified in any way, even on condition of anonymity.
+
+In general, information obtained under any of these circumstances can be pursued with other sources to be placed on the record.
 
 %%
 % The back matter contains appendices, bibliographies, indices, glossaries, etc.
