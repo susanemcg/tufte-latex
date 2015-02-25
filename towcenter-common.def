@@ -372,7 +372,7 @@
    \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
    \belowdisplayskip \abovedisplayskip
    \let\@listi\@listI}
-\normalbaselineskip=14pt
+\normalbaselineskip=16pt
 \normalsize
 \renewcommand\small{%
    \@setfontsize\small\@ixpt{12}%
@@ -1031,7 +1031,11 @@
     % Capture the contents of the \caption and \label commands to use later
     \global\let\@towcenter@orig@caption\caption%
     \global\let\@towcenter@orig@label\label%
-    \renewcommand{\caption}{\optparams{\@towcenter@caption}{[][0pt]}}%
+
+    % Hackily removing optional params from "caption" in order to achieve compilation
+
+    %\renewcommand{\caption}{\optparams{\@towcenter@caption}{[][0pt]}}%
+
     \renewcommand{\label}[1]{\@towcenter@label{##1}}%
     % Handle subfigure package compatibility
     \ifthenelse{\boolean{@towcenter@packages@subfigure}}{%
