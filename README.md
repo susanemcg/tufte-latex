@@ -21,7 +21,39 @@ Essentials
 	xelatex sample-report.tex
 
 
-**Formatting help:**
+***Known Issues/Dependencies:***
+
+This fileset does *not* compile properly if the `soul` package is present. Users who do a "complete" (rather than a minimal) install of MacTeX (see below) may need to delete this package manually in order to use these files.
+
+**Formatting Basics:**
+
+	***Bold, Italics, Quotations***
+	\textbf{This text will be bold.}
+	\textit{This text will be in italics.}
+	``This will be in quotation marks.''
+
+	***Lists***
+	\begin{enumerate} Numbered list.
+	\begin{itemize} Bulleted list.
+	\begin{description}Description list.
+	\item text Add an item.
+
+	***Images***
+	\begin{figure}
+	\includegraphics{foldername/imagename.jpg}
+	\caption{Caption text here, if any.}
+	\end{figure}
+
+	***Links***
+	\href{Link URL}{Link text}
+
+	***Blockquotes***
+	\begin{quote}
+	``Quote goes here''
+	\end{quote}
+
+
+***More formatting help***
 
 LaTeX is an extremely powerful typesetting and layout engine; virtually every element of the page can be controlled in great detail. Good examples of how to achieve specific formats can be found in the LaTeX WikiBook here: [https://en.wikibooks.org/wiki/LaTeX](https://en.wikibooks.org/wiki/LaTeX). More detailed and extensive help can also be found on TeX Exchange, the Stack Exchange site dedicated to LaTeX: [https://tex.stackexchange.com/](https://tex.stackexchange.com/)
 
