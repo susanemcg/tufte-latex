@@ -1,8 +1,43 @@
-\documentclass[symmetric, notoc]{towcenter-book}
+\documentclass[symmetric, notoc, nobib]{towcenter-book}
 
 \hypersetup{colorlinks}% uncomment this line if you prefer colored hyperlinks (e.g., for onscreen viewing)
 
-\usepackage[superscript,biblabel]{cite}
+%\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[american]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{endnotes}
+\usepackage[notes15,strict,backend=biber,autolang=other,%
+bibencoding=latin1,notetype=endonly]{biblatex-chicago}
+\usepackage{ifthen}
+\usepackage{setspace}
+\renewcommand*{\biburlsetup}{%
+  \Urlmuskip=0mu plus 2mu\relax
+  \mathchardef\UrlBreakPenalty=200\relax
+  \mathchardef\UrlBigBreakPenalty=100\relax
+  \mathchardef\UrlEmergencyPenalty=9000\relax
+  \appto\UrlSpecials{%
+    \do\0{\mathchar`\0\penalty\UrlEmergencyPenalty}%
+    \do\1{\mathchar`\1\penalty\UrlEmergencyPenalty}%
+    \do\2{\mathchar`\2\penalty\UrlEmergencyPenalty}%
+    \do\3{\mathchar`\3\penalty\UrlEmergencyPenalty}%
+    \do\4{\mathchar`\4\penalty\UrlEmergencyPenalty}%
+    \do\5{\mathchar`\5\penalty\UrlEmergencyPenalty}%
+    \do\6{\mathchar`\6\penalty\UrlEmergencyPenalty}%
+    \do\7{\mathchar`\7\penalty\UrlEmergencyPenalty}%
+    \do\8{\mathchar`\8\penalty\UrlEmergencyPenalty}%
+    \do\9{\mathchar`\9\penalty\UrlEmergencyPenalty}}%
+  \def\UrlBreaks{%
+    \do\.\do\@\do\/\do\\\do\!\do\_\do\|\do\;\do\>\do\]\do\)\do\}%
+    \do\,\do\?\do\'\do\+\do\=\do\#\do\$\do\&\do\*\do\^\do\"}%
+  \def\UrlBigBreaks{\do\:\do\-}}
+\usepackage{url}
+\urlstyle{rm}
+\appto\bibsetup{\sloppy}
+%\appto\biburlsetup{\Urlmuskip=0mu plus 4mu\relax}
+\setlength{\dimen\footins}{9.5in}
+\renewcommand{\notesname}{Citations}
+\bibliography{sample}
 
 \geometry{a5paper,left=20mm,top=15mm,headsep=1\baselineskip,textwidth=95mm,textheight=180mm,headheight=\baselineskip,marginparwidth=20mm, marginparsep=5mm}
 
@@ -233,7 +268,7 @@ and the John S. and James L. Knight Foundation}
 
 \noindent\textit{And ultimately, it means it is the responsibility of every one of us to ensure that these standards are upheld. Any time a question is raised about any aspect of our work, it should be taken seriously.}\\[0.5cm]
 
-\noindent \small{Copyright \copyright\ \the\year\ \thanklessauthor}
+\noindent \small{Copyright  \the\year\ \thanklessauthor}
 
 \noindent \small{This volume produced with the assistance of the \textsf{tufte-\LaTeX{}} class.}
 
@@ -277,7 +312,7 @@ Under AP's rules, material from anonymous sources may be used only if:
 \item The material is information and not opinion or speculation, and is vital to the news report.
 \item The information is not available except under the conditions of anonymity imposed by the source.
 \item The source is reliable, and in a position to have accurate information.
-\end{enumerate}\marginnote{For more on formatting lists in \LaTeX{}, see \href{https://en.wikibooks.org/wiki/LaTeX/List_Structures}{``List Structures''}.\cite{LaTeXLists}}
+\end{enumerate}\marginnote{For more on formatting lists in \LaTeX{}, see \href{https://en.wikibooks.org/wiki/LaTeX/List_Structures}{``List Structures''}.\autocite{LaTeXLists}}
 
 Reporters who intend to use material from anonymous sources must get approval from their news manager before sending the story to the desk. The manager is responsible for vetting the material and making sure it meets AP guidelines. The manager must know the identity of the source, and is obligated, like the reporter, to keep the source's identity confidential. Only after they are assured that the source material has been vetted should editors allow it to be transmitted.
 
@@ -318,8 +353,7 @@ In general, information obtained under any of these circumstances can be pursued
 
 \backmatter
 
-\bibliography{sample}
-\bibliographystyle{unsrt}
+\theendnotes
 
 
 
